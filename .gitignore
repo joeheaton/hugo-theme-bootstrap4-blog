@@ -1,3 +1,5 @@
 node_modules
 exampleSite/themes
 yarn.lock
+data/sri.toml
+static/css
