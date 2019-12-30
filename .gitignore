@@ -3,3 +3,4 @@ exampleSite/themes
 yarn.lock
 data/sri.toml
 static/css
+.sass-cache
