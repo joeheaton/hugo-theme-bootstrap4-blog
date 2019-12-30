@@ -32,15 +32,15 @@
 {{ $truncate := default true .Site.Params.truncate }}
 {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
 {{ range $paginator.Pages }}
-{{ if $truncate }}
-{{ .Render "summary" }}
-{{ else }}
-{{ .Render "content" }}
-{{ end }}
+  {{ if $truncate }}
+    {{ .Render "summary" }}
+  {{ else }}
+    {{ .Render "content" }}
+  {{ end }}
 {{ end }}
 
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-{{ partial "pagination.html" . }}
+  {{ partial "pagination.html" . }}
 {{ end }}
 
 {{ end }}

@@ -19,5 +19,3 @@ for (var asset in assets) {
 
   console.log(asset + ' = "' + hash + '"');
 }
-
-// vim: set ts=2 sw=2 et:

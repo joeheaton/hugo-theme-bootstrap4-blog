@@ -15,6 +15,7 @@
 //@import "rotated-flipped";
 //@import "stacked";
 //@import "icons";
+
 // selectively import icons we need from font-awesome
 // see: node_modules/font-awesome/scss/_icons.scss
 .#{$fa-css-prefix}-tag:before { content: $fa-var-tag; }
