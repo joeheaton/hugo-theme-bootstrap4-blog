@@ -1,19 +1,31 @@
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
-
-{{- with .Site.Params.google_verify_meta -}}
-<meta name="google-site-verification" content="{{ . }}" />
-{{ end }}
-
-{{- with .Site.Params.bing_verify_meta -}}
-<meta name="msvalidate.01" content="{{ . }}" />
-{{ end }}
-
-{{- with .Site.Params.yandex_verify_meta -}}
-<meta name="yandex-verification" content="{{ . }}" />
-{{ end }}
-
 {{- .Site.Hugo.Generator -}}
+
+<!-- Colour -->
+<meta name="theme-color" content="{{ .Site.Params.BrowserColor }}">
+<!-- (Apple) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- (Microsoft) -->
+<meta name="msapplication-TileColor" content="{{ .Site.Params.BrowserColor }}">
+
+{{ "<!-- Flattr ID for the Flattr browser plug-in -->" | safeHTML }}
+{{- with .Site.Params.flattr_id -}}<meta name="flattr:id" content="{{ . }}">{{ end }}
+
+
+{{ "<!-- Bootstrap CDN -->" | safeHTML }}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{{ "<!-- FontAwesome CDN -->" | safeHTML }}
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+{{ "<!-- FontAwesome Brands -->" | safeHTML }}
+<link href="{{ "fonts/brands.min.css" | absURL }}" rel="stylesheet" integrity="sha256-3488f66a1063c93b5a65469f32e933cbfc65c90a4b0464d10ac5560d71136337" crossorigin="anonymous">
+
+{{ "<!-- JQuery Slim via CDN -->" | safeHTML }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
