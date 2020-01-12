@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
+<html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
 
   <head>
     {{ partial "head-meta.html" . }}
@@ -12,23 +12,16 @@
 
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
-    {{ if or (eq .Lang "ar") (eq .Lang "fa") }}
-    {{ "<!-- ar -->" | safeHTML }}
-    <link href="{{ "css/style.rtl.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.styleltr}}" crossorigin="anonymous"{{ end }}>
-    {{ else }}
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
-    {{ end }}
 
     {{ "<!-- RSS 2.0 feed -->" | safeHTML }}
     {{ with .OutputFormats.Get "rss" -}}
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 
-    {{ template "_internal/google_analytics_async.html" . }}
-
     {{ if .Site.Params.cookie_consent_info_url }}
-    {{ partial "cookie-consent.html" . }}
+      {{ partial "cookie-consent.html" . }}
     {{ end }}
 
     {{ partial "head-custom.html" . }}
@@ -37,7 +30,7 @@
   <body>
 
     {{ block "masthead" . }}
-    <div class="blog-masthead">
+    <div class="masthead">
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
@@ -81,15 +74,18 @@
 
     {{ block "footer" . }}
     <footer class="blog-footer">
-      <p dir="auto">
+      {{ partial "sharing-icons.html" . }}
+
+      <p>
       {{ if .Site.Copyright }}
-      {{ .Site.Copyright | markdownify }}
+        {{ .Site.Copyright | markdownify }}
       {{ else }}
-      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+        Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
       {{ end }}
       </p>
+
       <p>
-      <a href="#">{{ i18n "backToTop" }}</a>
+        <a href="#">{{ i18n "backToTop" }}</a>
       </p>
     </footer>
     {{ end }}
@@ -97,5 +93,3 @@
   </body>
 
 </html>
-
-{{- /* vim: set ts=2 sw=2 et: */}}
