@@ -5,3 +5,5 @@ data/sri.toml
 static/css
 .sass-cache
 data/sri.toml
+static/css/style.css
+static/css/style.rtl.css
