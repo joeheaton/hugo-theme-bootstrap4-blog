@@ -2,9 +2,24 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
-    <p class="blog-post-meta"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time> {{ i18n "authoredBy" }} {{ .Params.author | default .Site.Params.author }}{{ if or (.Params.categories) (.Params.tags) }} {{ i18n "postedIn" }} {{ partial "meta-terms.html" . }}{{ end }}</p>
+    <h2>
+      <a href="{{ .Permalink }}" title="{{ .Title }}">
+        {{ .Title | markdownify }}
+      </a>
+    </h2>
   </header>
-  {{ .Summary }}
-  <a href='{{ .Permalink }}'>{{ i18n "readMore" }}</a>
+
+  <section class="content">
+    {{ .Summary }}
+
+    <!--<a href='{{ .Permalink }}'>
+      {{ i18n "readMore" }}
+    </a>-->
+  </section>
+
+  <footer>
+    <p class="metadata">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time> {{ i18n "authoredBy" }} {{ .Params.author | default .Site.Params.author }}{{ if or (.Params.categories) (.Params.tags) }} {{ i18n "postedIn" }} {{ partial "meta-terms.html" . }}{{ end }}
+    </p>
+  </footer>
 </article> <!-- /.blog-post -->

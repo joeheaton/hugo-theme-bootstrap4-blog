@@ -4,13 +4,12 @@
   <head>
     {{ partial "head-meta.html" . }}
 
+    <link rel="canonical" href="{{ .Permalink }}">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
     {{ block "schema-dot-org" . }}
       <!-- schema.org metadata differs for Nodes and Pages -->
     {{ end }}
-
-    <link rel="canonical" href="{{ .Permalink }}">
-
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
@@ -20,76 +19,138 @@
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 
-    {{ if .Site.Params.cookie_consent_info_url }}
-      {{ partial "cookie-consent.html" . }}
-    {{ end }}
-
     {{ partial "head-custom.html" . }}
   </head>
 
   <body>
+    <div class="masthead-super d-flex flex-row justify-content-between">
+      <div>
+        Joe Heaton&#39;s Webzone
+      </div>
 
-    {{ block "masthead" . }}
-    <div class="masthead">
-      <div class="container">
+      <div>
+        🥐 ☕
+      </div>
+
+      <div>
+        Online since 2011
+      </div>
+    </div>
+
+    <div id="tallest"> <!-- Site container -->
+
+      {{ block "masthead" . }}
+      <div class="masthead">
+        <div class="banner">
+        </div>
+
         <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
+          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">
+            {{ i18n "home" }}
+          </a>
+          
           {{- $currentPage := . -}}
           {{ range .Site.Menus.navbar }}
-          {{ $menuURL := .URL | absLangURL }}
-          <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+            {{ $menuURL := .URL | absLangURL }}
+            <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">
+              {{ .Name }}
+            </a>
           {{ end }}
         </nav>
       </div>
-    </div>
-    {{ end }}
-
-    {{ block "header" . }}
-    {{ if (ne .Site.Params.header_visible false) }}
-    <header class="blog-header">
-      <div class="container">
-        <h1 class="blog-title" dir="auto"><a href="{{ .Site.BaseURL | absURL }}" rel="home">{{ .Site.Title | safeHTML }}</a></h1>
-        {{ if .Site.Params.description }}<p class="lead blog-description" dir="auto">{{ .Site.Params.description | markdownify }}</p>{{ end }}
-      </div>
-    </header>
-    {{ end }}
-    {{ end }}
-
-    {{ block "body" . }}
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 blog-main">
-
-          {{ block "main" . }}
-          <!-- The part of the page that begins to differ between templates -->
-          {{ end }}
-
-        </div> {{ "<!-- /.blog-main -->" | safeHTML }}
-
-        {{ partial "sidebar.html" . }}
-
-      </div> {{ "<!-- /.row -->" | safeHTML }}
-    </div> {{ "<!-- /.container -->" | safeHTML }}
-    {{ end }}
-
-    {{ block "footer" . }}
-    <footer class="blog-footer">
-      {{ partial "sharing-icons.html" . }}
-
-      <p>
-      {{ if .Site.Copyright }}
-        {{ .Site.Copyright | markdownify }}
-      {{ else }}
-        Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
       {{ end }}
-      </p>
 
-      <p>
-        <a href="#">{{ i18n "backToTop" }}</a>
-      </p>
-    </footer>
-    {{ end }}
 
+      {{ block "header" . }}
+
+      {{ if (ne .Site.Params.header_visible false) }}
+      <header class="blog-header">
+        <div class="container">
+          <h1 class="blog-title" dir="auto">
+            <a href="{{ .Site.BaseURL | absURL }}" rel="home">
+              {{ .Site.Title | safeHTML }}
+            </a>
+          </h1>
+
+          {{ if .Site.Params.description }}
+          <p class="lead blog-description" dir="auto">
+            {{ .Site.Params.description | markdownify }}
+          </p>
+          {{ end }}
+        </div>
+      </header>
+      {{ end }}
+
+      {{ end }}
+
+
+      {{ block "body" . }}
+      <main id="main" class="container">
+        <div class="row">
+          <div class="container-fluid main">
+
+            {{ block "main" . }}
+            <!-- The part of the page that begins to differ between templates -->
+            {{ end }}
+
+          </div> {{ "<!-- /.blog-main -->" | safeHTML }}
+
+          {{/* {{ partial "sidebar.html" . }} */}}
+
+        </div> {{ "<!-- /.row -->" | safeHTML }}
+
+        <!--<div class="row">
+          <b>Main Footer</b>
+        </div>-->
+      </main> {{ "<!-- /.container -->" | safeHTML }}
+      {{ end }}
+
+
+      {{ block "footer" . }}
+      <footer id="footer">
+
+        <div class="bigbtns">
+          <div id="bigbtns_firefoxbtn">
+            <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
+              <img src="{{ .Site.BaseURL | absLangURL }}/images/firefox2019.svg" alt="firefox">
+            </a>
+            
+            <span>
+              Developed on 
+              <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
+                Firefox
+              </a>
+            </span>
+          </div>
+          
+          <div id="bigbtns_builtwithhtml5">
+            <a href="https://w3.org/html5" title="World Wide Web Consortium and Web Hypertext Application Technology Working Group's Hypertext Markup Language specification version 5, or just: W3C &amp; WHATWG's HTML5" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="#E34F26" d="M71,460 L30,0 481,0 440,460 255,512"/>
+                <path fill="#EF652A" d="M256,472 L405,431 440,37 256,37"/>
+                <path fill="#EBEBEB" d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"/>
+                <path fill="#FFF" d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"/>
+              </svg>
+            </a>
+            
+            <span>Flash Killer, HTML5</span>
+          </div>
+        </div>
+
+        <p>
+          {{ if .Site.Copyright }}
+            {{ .Site.Copyright | markdownify }}
+          {{ else }}
+            Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+          {{ end }}
+        </p>
+
+        {{/* <p>
+          <a href="#">{{ i18n "backToTop" }}</a>
+        </p> */}}
+      </footer>
+      {{ end }}
+
+    </div>
   </body>
-
 </html>

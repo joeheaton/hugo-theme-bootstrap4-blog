@@ -56,12 +56,15 @@
 {{ define "main" }}
 {{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
 
-<article class="blog-post">
+<article class="blog-post single">
   <header>
     <h2 class="blog-post-title" dir="auto"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <p class="blog-post-meta"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time> {{ i18n "authoredBy" }} {{ .Params.author | default .Site.Params.author }}{{ if or (.Params.categories) (.Params.tags) }} {{ i18n "postedIn" }} {{ partial "meta-terms.html" . }}{{ end }}</p>
   </header>
-  {{ .Content }}
+
+  <section class="content">
+    {{ .Content }}
+  </section>
 
   {{ if .IsTranslated }}
   <h4>{{ i18n "translations" }}</h4>
@@ -74,19 +77,15 @@
   </ul>
   {{ end }}
 
-  {{ if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) }}
-  <hr>
   <footer>
+    {{ if (ne ($.Param "sharingicons") false) }}
+      {{ partial "sharing-icons.html" . }}
+    {{ end }}
 
-  {{ if (ne ($.Param "sharingicons") false) }}
-  {{ partial "sharing-icons.html" . }}
-  {{ end }}
-
-  {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
-  {{ template "_internal/disqus.html" . }}
-  {{ end }}
+    {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
+      {{ template "_internal/disqus.html" . }}
+    {{ end }}
   </footer>
-  {{ end }}
 
 </article> <!-- /.blog-post -->
 

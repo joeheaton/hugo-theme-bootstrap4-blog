@@ -1,45 +1,47 @@
 <nav class="nav sharing-icons">
+  <!--<span class="nav-item fa fa-share-square" title="Share this!"></span>-->
+
   <a class="nav-item" href="https://twitter.com/intent/tweet?url={{ .Permalink }}&amp;text={{ .Title }}" title="Tweet this">
-    <span class="fab fa-twitter fa-2x"></span>
+    <span class="fab fa-twitter"></span>
   </a>
   
   <a class="nav-item" href="https://reddit.com/submit/?url={{ .Permalink }}" title="Share on Reddit">
-    <span class="fab fa-reddit-alien fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-reddit-alien" aria-hidden="true"></span>
   </a>
   
   <a class="nav-item" href="http://tumblr.com/widgets/share/tool?canonicalUrl={{ .Permalink }}" title="Share on Tumblr">
-    <span class="fab fa-tumblr fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-tumblr" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" title="Share on Facebook">
-    <span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-facebook-f" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" title="Share on Pintrest">
-    <span class="fab fa-pinterest-p fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-pinterest-p" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ .Permalink }}" title="Share on LinkedIn">
-    <span class="fab fa-linkedin fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-linkedin" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://www.xing.com/app/user?op=share;url={{ .Permalink }}" title="Share on Xing">
-    <span class="fab fa-xing fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-xing" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}" title="Share on Hackernews">
-    <span class="fab fa-hacker-news fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-hacker-news" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="https://telegram.me/share/url?text=Looks at this cool article {{ .Title }} from {{ .Site.Title }}!&amp;url={{ .Permalink }}" title="Share via Telegram">
-    <span class="fab fa-telegram-plane fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-telegram-plane" aria-hidden="true"></span>
   </a>
 
   <a class="nav-item" href="whatsapp://send?text=Looks at this cool article {{ .Permalink }} from {{ .Site.Title }}!" title="Share via WhatsApp">
-    <span class="fab fa-whatsapp fa-2x" aria-hidden="true"></span>
+    <span class="fab fa-whatsapp" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="mailto:?subject={{ .Title }} @ {{ .Site.BaseURL }}&amp;body=Looks at this cool article {{ .Permalink }} from {{ .Site.Title }}!" title="Share via Email">
-    <span class="fas fa-envelope fa-2x" aria-hidden="true"></span>
+  <a class="nav-item" href="mailto:?subject={{ .Title }} from {{ .Permalink }}&amp;body=Looks at this cool article {{ .Permalink }} from {{ .Site.Title }}!" title="Share via Email">
+    <span class="fas fa-envelope" aria-hidden="true"></span>
   </a>
 </nav>

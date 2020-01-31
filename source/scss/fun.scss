@@ -1,0 +1,83 @@
+.bigbtns {
+	text-align: center;
+	margin: 0 0 0.4em;
+    cursor: default;
+    
+    * {
+        vertical-align: middle;
+    }
+
+    div {
+        display: inline-block;
+        background-color: #000;
+        color: #FFF;
+        font-size: 14px;
+        font-family: sans-serif;
+        font-weight: 600;
+        text-shadow: 0 1px #000;
+        padding: 0.1em;
+        margin: 0.2em 0.4em 0.2em 0;
+        border-radius: 3px;
+        box-shadow: 0 0 2px 0 #000;
+        vertical-align: middle;
+    
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        img,
+        svg {
+            display: inline-block !important;
+        	width: 100%;
+            max-width: 40px !important;
+            height: 100%;
+            max-height: 30px !important;
+            padding: 0 !important;
+            vertical-align: middle !important;
+            box-shadow: 0 0 0 0 transparent;
+            transition: all 0.6s ease-in-out;
+        }
+
+        svg:hover,
+        img:hover {
+            transform: rotate(720deg);
+        }
+    }
+
+    a {
+        display: inline-block;
+        color: #FFF !important;
+        text-decoration: underline;
+        outline: 0;
+        vertical-align: baseline;
+
+        &:first-of-type {
+            margin-left: 3px;
+        }
+
+        &:nth-of-type(2n) {
+            margin-left: -9px;
+        }
+    }
+
+    span {
+        margin-right: 6px;
+
+
+        & a:nth-of-type(2n),
+        & a:nth-of-type(1n) {
+            margin: 0;
+        }
+    }
+}
+
+#bigbtns_firefoxbtn {
+	background-color: #5d80bb;
+	background: linear-gradient(to bottom, #5d80bb 0%, #253c76 100%) repeat scroll 0 0 #5d80bb;
+}
+
+#bigbtns_builtwithhtml5 {
+	background-color: #f16529;
+	background: linear-gradient(to bottom, #f16529 0%, #e44d26 100%) repeat scroll 0 0 #f16529;
+}
