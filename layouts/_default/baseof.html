@@ -4,6 +4,7 @@
   <head>
     {{ partial "head-meta.html" . }}
 
+    <base target="_blank">
     <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
@@ -45,14 +46,15 @@
         </div>
 
         <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">
+          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}" target="_self">
             {{ i18n "home" }}
           </a>
           
           {{- $currentPage := . -}}
           {{ range .Site.Menus.navbar }}
             {{ $menuURL := .URL | absLangURL }}
-            <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">
+
+            <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}" target="_self">
               {{ .Name }}
             </a>
           {{ end }}
