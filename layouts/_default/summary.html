@@ -1,23 +1,13 @@
 {{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
 
-<article class="blog-post">
+<article class="blog-post list">
   <header>
     <h2>
       <a href="{{ .Permalink }}" title="{{ .Title }}" target="_self">
         {{ .Title | markdownify }}
       </a>
     </h2>
-  </header>
 
-  <section class="content">
-    {{ .Summary }}
-
-    <a href='{{ .Permalink }}'  target="_self">
-      {{ i18n "readMore" }}
-    </a>
-  </section>
-
-  <footer>
     <p class="metadata">
       <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
         {{ .Date.Format $dateFormat }}
@@ -31,5 +21,17 @@
         {{ partial "meta-terms.html" . }}
       {{ end }}
     </p>
+  </header>
+
+  <section class="content">
+    {{ .Summary }}
+
+    <a href='{{ .Permalink }}'  target="_self">
+      {{ i18n "readMore" }}
+    </a>
+  </section>
+
+  <footer>
+    
   </footer>
 </article> <!-- /.blog-post -->
