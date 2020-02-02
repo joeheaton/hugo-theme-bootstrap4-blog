@@ -42,8 +42,36 @@
 
       {{ block "masthead" . }}
       <div class="masthead">
-        <div class="banner">
-        </div>
+
+        {{ block "header" . }}
+          {{ if (ne .Site.Params.header_visible false) }}
+          <div class="banner">
+
+            <nav class="nav sharing-icons justify-content-end">
+              <a class="nav-item" title="Discord: Deso#9121">
+                <span class="fab fa-discord" aria-hidden="true"></span>
+              </a>
+
+              <a class="nav-item" href="https://twitter.com/{{ .Site.Params.social.twitter }}" title="Twitter">
+                <span class="fab fa-twitter"></span>
+              </a>
+
+              <a class="nav-item" href="https://www.linkedin.com/in/{{ .Site.Params.social.linkedin }}" title="LinkedIn">
+                <span class="fab fa-linkedin" aria-hidden="true"></span>
+              </a>
+
+              <a class="nav-item" href="https://www.github.com/{{ .Site.Params.social.github }}" title="Github">
+                <span class="fab fa-github" aria-hidden="true"></span>
+              </a>
+
+              <a class="nav-item" href="https://www.patreon.com/{{ .Site.Params.social.patreon }}" title="Patreon">
+                <span class="fab fa-patreon" aria-hidden="true"></span>
+              </a>
+            </nav>
+
+          </div>
+          {{ end }}
+        {{ end }}
 
         <nav class="nav blog-nav">
           <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}" target="_self">
