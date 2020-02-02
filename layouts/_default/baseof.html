@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
-
   <head>
     {{ partial "head-meta.html" . }}
 
@@ -17,7 +16,7 @@
 
     {{ "<!-- RSS 2.0 feed -->" | safeHTML }}
     {{ with .OutputFormats.Get "rss" -}}
-      {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+      {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 
     {{ partial "head-custom.html" . }}
@@ -74,13 +73,13 @@
         {{ end }}
 
         <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}" target="_self">
+          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL }}" target="_self">
             {{ i18n "home" }}
           </a>
           
           {{- $currentPage := . -}}
           {{ range .Site.Menus.navbar }}
-            {{ $menuURL := .URL | absLangURL }}
+            {{ $menuURL := .URL }}
 
             <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}" target="_self">
               {{ .Name }}
@@ -116,7 +115,7 @@
         <div class="bigbtns">
           <div id="bigbtns_firefoxbtn">
             <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
-              <img src="{{ .Site.BaseURL | absLangURL }}/images/firefox2019.svg" alt="firefox">
+              <img src="{{ .Site.BaseURL }}/images/firefox2019.svg" alt="firefox">
             </a>
             
             <span>
@@ -143,10 +142,11 @@
 
         <p>
           {{ if .Site.Copyright }}
-            {{ .Site.Copyright | markdownify }}
+            {{ .Site.Copyright | markdownify }}.
           {{ else }}
             Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
           {{ end }}
+          <a href="{{ .Site.BaseURL }}/privacy">Privacy policy.</a>
         </p>
 
         {{/* <p>
