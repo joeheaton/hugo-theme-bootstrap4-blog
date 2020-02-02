@@ -91,47 +91,21 @@
       {{ end }}
 
 
-      {{ block "header" . }}
-
-      {{ if (ne .Site.Params.header_visible false) }}
-      <header class="blog-header">
-        <div class="container">
-          <h1 class="blog-title" dir="auto">
-            <a href="{{ .Site.BaseURL | absURL }}" rel="home">
-              {{ .Site.Title | safeHTML }}
-            </a>
-          </h1>
-
-          {{ if .Site.Params.description }}
-          <p class="lead blog-description" dir="auto">
-            {{ .Site.Params.description | markdownify }}
-          </p>
-          {{ end }}
-        </div>
-      </header>
-      {{ end }}
-
-      {{ end }}
-
-
       {{ block "body" . }}
       <main id="main" class="container">
         <div class="row">
-          <div class="container-fluid main">
+          <div class="col-sm-8 no-gutters container-fluid main">
 
             {{ block "main" . }}
             <!-- The part of the page that begins to differ between templates -->
             {{ end }}
 
           </div> {{ "<!-- /.blog-main -->" | safeHTML }}
-
-          {{/* {{ partial "sidebar.html" . }} */}}
+ 
+          {{ partial "sidebar.html" . }}
 
         </div> {{ "<!-- /.row -->" | safeHTML }}
 
-        <!--<div class="row">
-          <b>Main Footer</b>
-        </div>-->
       </main> {{ "<!-- /.container -->" | safeHTML }}
       {{ end }}
 
@@ -180,7 +154,6 @@
         </p> */}}
       </footer>
       {{ end }}
-
     </div>
   </body>
 </html>
