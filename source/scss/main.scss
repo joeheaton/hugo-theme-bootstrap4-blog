@@ -51,6 +51,11 @@ h6, .h6 {
   }
 }
 
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; }
+h3, h4, h5 { font-size: 1rem; }
+
 #tallest, .masthead-super {
   max-width: $site-width;
   margin: 0 auto;
@@ -77,6 +82,7 @@ h6, .h6 {
 .masthead {
   .banner {
     min-height: 180px;
+    padding: 1%;
     background: repeating-linear-gradient( 45deg, #2d2b38, #2d2b38 20px, #5d4672 20px, #5d4672 40px ) repeat center center #2d2b38;
     background-image: url("https://i.imgur.com/umisqTL.png");
     background-position: center -12rem;
@@ -84,9 +90,14 @@ h6, .h6 {
     border-bottom: 1px solid #000;
     border-radius: $br $br 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
+
+    .sharing-icons span:hover {
+      transition: $trans;
+      background: #fff;
+    }
   }
 
-  .nav {
+  .blog-nav {
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
     color: #fff;
     box-shadow: 0 0 4px $shadow;
@@ -136,11 +147,6 @@ h6, .h6 {
     border-bottom: 1px dashed #aaa;
   }
 
-  h2{
-    font-size: 1.4rem;
-    font-weight: normal;
-  }
-
   .description {
     color: #999;
   }
@@ -166,19 +172,22 @@ h6, .h6 {
       border-top: 1px solid #4191ff;
     }
   }
+
+  article img {
+    max-width: 100%;
+    height: auto;
+    margin: 13px auto;
+  }
 }
 
-article img {
-  max-width: 100%;
-  height: auto;
-  margin: 13px auto;
+// Page elements
+.highlight {
+  margin: 0 0 1rem;
+  background: #00000002;
 }
 
-// add margin to sharing icons (except the first one)
-.sharing-icons .nav-item+.nav-item {
-  margin-left: 0.6rem;
-}
 
+// Sharing Icons
 .sharing-icons {
   span {
     padding: 0.4rem 0;
@@ -198,6 +207,10 @@ article img {
     }
   }
 
+  .nav-item+.nav-item {
+    margin-left: 0.6rem;
+  }
+
   .fa-twitter { color: #55acee; }
   .fa-reddit-alien { color: #ff4500; }
   .fa-tumblr { color: #35465c; }
@@ -208,7 +221,14 @@ article img {
   .fa-hacker-news { color: #f60; }
   .fa-telegram { color: #54a9eb; }
   .fa-whatsapp { color: #25d366; }
+  .fa-discord { color: #7289DA; }
+  .fa-patreon { color: rgb(232, 91, 70); }
+  .fa-github { color: #000; }
   .fa-envelope { color: #777; }
+}
+
+.fa-exclamation-triangle {
+  color: gold;
 }
 
 /*
