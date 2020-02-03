@@ -6,7 +6,7 @@ $primary: #2d2b38;
 $bg-dark: #2965b4;
 $bg-light: #519cff;
 $site-width: 880px;
-$shadow: #888;
+$shadow: #333;
 $br: 8px;
 $trans: all .2s cubic-bezier(.79,.14,.15,.86);
 
@@ -32,6 +32,13 @@ body {
   }
 }
 
+a,
+a:link,
+a:hover,
+a:active {
+  outline: none;
+}
+
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -51,10 +58,15 @@ h6, .h6 {
   }
 }
 
-h1 { font-size: 1.6rem; }
-h2 { font-size: 1.3rem; }
-h3 { font-size: 1.1rem; }
-h3, h4, h5 { font-size: 1rem; }
+h1, .h1 { font-size: 1.6rem; }
+h2, .h2 { font-size: 1.3rem; }
+h3, .h3 { font-size: 1.1rem; }
+h4, .h4, h5, .h5 { font-size: 1rem; }
+
+code {
+  // Hack, 'Fira Mono' + Bootstrap defaults
+  font-family: Hack,'Fira Mono',SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
 
 #tallest, .masthead-super {
   max-width: $site-width;
@@ -100,7 +112,6 @@ h3, h4, h5 { font-size: 1rem; }
   .blog-nav {
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
     color: #fff;
-    box-shadow: 0 0 4px $shadow;
 
     /* Nav links */
     .nav-link {
