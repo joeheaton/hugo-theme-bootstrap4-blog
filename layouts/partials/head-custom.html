@@ -1,1 +1,5 @@
 <!-- Create <project-root>/layouts/partials/head-custom.html to overwrite this empty template and put custom code into the <head> section. -->
+
+{{ if .Site.Params.CookieConsent }}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>
+{{ end }}
