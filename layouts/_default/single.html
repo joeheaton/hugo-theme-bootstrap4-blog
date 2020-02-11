@@ -64,24 +64,46 @@
     </h2>
 
     <p class="metadata">
-      <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
-      {{ $ageMonths := div (sub now.Unix .Date.Unix) 2592000 }}
-      {{ if gt $ageMonths 11 }}
-        <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
-      {{ end }}
+      <!-- show metadata on posts -->
+      {{ if ne .Params.type "page" }}
+        {{ if not .Date.IsZero }}
+          <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
+          {{ $ageMonths := div (sub now.Unix .Date.Unix) 2592000 }}
+          {{ if gt $ageMonths 11 }}
+            <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
+          {{ end }}
 
-      <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
-        {{ .Date.Format $dateFormat }}
-      </time>
-      
-      {{ i18n "authoredBy" }}
-      
-      {{ .Params.author | default .Site.Params.author }}
-      {{ if or (.Params.categories) (.Params.tags) }}
-        {{ i18n "postedIn" }}
-        {{ partial "meta-terms.html" . }}
+          Posted on
+          <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
+            {{ .Date.Format $dateFormat }}
+          </time>
+        {{ end }} <!-- /if not .Date.IsZero -->
+        
+        {{ if .Site.Params.showAuthor }}
+          {{ i18n "authoredBy" }}
+          {{ .Params.author | default .Site.Params.author }}
+        {{ end }}
+
+        {{ if or (.Params.categories) (.Params.tags) }}
+          {{ i18n "postedIn" }}
+          {{ partial "meta-terms.html" . }}
+        {{ end }}
+      {{ end }} <!-- /.type=page -->
+
+      <!-- if lastmod differs to date then show Updated -->
+      {{ if and .Params.lastmod (ne .Params.lastmod .Date) }}
+        <!-- Show separator on pages which don't have a publishdate -->
+        {{ if ne .Params.type "page" }}
+          &ndash;
+        {{ end }}
+        
+        Updated 
+        <time datetime="{{ .Params.lastmod.Format "2001-01-01T00:00:00Z00:00" }}">
+          {{ .Params.lastmod.Format $dateFormat }}
+        </time>
       {{ end }}
     </p>
+    
   </header>
 
   <section class="content">
