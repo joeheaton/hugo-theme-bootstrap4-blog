@@ -44,9 +44,13 @@
 
         {{ block "header" . }}
           {{ if (ne .Site.Params.header_visible false) }}
-          <div class="banner">
+          <div class="banner d-flex">
+            {{ if .Site.Params.header_avatar }}
+            <div class="avatar">
+            </div>
+            {{ end }}
 
-            <nav class="nav sharing-icons justify-content-end">
+            <nav class="nav sharing-icons justify-content-end ml-auto">
               <a class="nav-item" title="Discord: Deso#9121">
                 <span class="fab fa-discord" aria-hidden="true"></span>
               </a>
