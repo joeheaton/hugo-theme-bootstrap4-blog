@@ -53,7 +53,7 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
+{{ $dateFormat := default "2 Jan 2006" (index .Site.Params "date_format") }}
 
 <article class="blog-post single">
   <header>

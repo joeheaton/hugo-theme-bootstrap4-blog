@@ -1,4 +1,4 @@
-{{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
+{{ $dateFormat := default "2 Jan 2006" (index .Site.Params "date_format") }}
 
 <article class="blog-post list">
   <header>
@@ -9,13 +9,17 @@
     </h2>
 
     <p class="metadata">
+      Posted on
+
       <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
         {{ .Date.Format $dateFormat }}
       </time>
 
-      {{ i18n "authoredBy" }}
+      {{ if .Site.Params.showAuthor }}
+        {{ i18n "authoredBy" }}
+        {{ .Params.author | default .Site.Params.author }}
+      {{ end }}
       
-      {{ .Params.author | default .Site.Params.author }}
       {{ if or (.Params.categories) (.Params.tags) }}
         {{ i18n "postedIn" }}
         {{ partial "meta-terms.html" . }}

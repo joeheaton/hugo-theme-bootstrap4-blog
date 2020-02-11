@@ -7,7 +7,7 @@ $bg-dark: #2965b4;
 $bg-light: #519cff;
 $site-width: 880px;
 $shadow: #333;
-$br: 8px;
+$border-radius: 8px;
 $trans: all .2s cubic-bezier(.79,.14,.15,.86);
 
 /*
@@ -74,7 +74,7 @@ code {
 }
 
 #tallest {
-  border-radius: $br;
+  border-radius: $border-radius;
   box-shadow: 0 0 3px 1px #333;
 }
 
@@ -100,7 +100,7 @@ code {
     background-position: center -12rem;
     background-size: cover;
     border-bottom: 1px solid #000;
-    border-radius: $br $br 0 0;
+    border-radius: $border-radius $border-radius 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
     .sharing-icons span:hover {
@@ -265,7 +265,7 @@ code {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
-  border-radius: 0 0 $br $br;
+  border-radius: 0 0 $border-radius $border-radius;
 
   p:last-child {
     margin-bottom: 0;
