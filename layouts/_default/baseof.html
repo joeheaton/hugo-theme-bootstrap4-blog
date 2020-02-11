@@ -46,8 +46,10 @@
           {{ if (ne .Site.Params.header_visible false) }}
           <div class="banner d-flex">
             {{ if .Site.Params.header_avatar }}
-            <div class="avatar">
-            </div>
+            <a href="{{ .Site.BaseURL }}" class="avatar" target="_self">
+              <div class="avatar-img">
+              </div>
+            </a>
             {{ end }}
 
             <nav class="nav sharing-icons justify-content-end ml-auto">
