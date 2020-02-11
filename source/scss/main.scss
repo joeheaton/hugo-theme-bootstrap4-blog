@@ -103,6 +103,16 @@ code {
     border-radius: $border-radius $border-radius 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
+    .avatar {
+      background: transparent url("https://i.imgur.com/EqHv0We.jpg") center/100% no-repeat;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 100%;
+      box-shadow: 0 0 3px #000;
+        background-size: 120%;
+        background-position: 30% -10%;
+    }
+
     .sharing-icons span:hover {
       transition: $trans;
       background: #fff;
@@ -278,4 +288,14 @@ code {
 
  #disqus_thread {
   margin-top: 1rem;
+}
+
+.twitter-tweet {
+  margin: 0 auto 1rem !important;
+}
+
+.youtube-player {
+  width: 640px;
+  max-width: 100%; 
+  height: 311px;
 }
