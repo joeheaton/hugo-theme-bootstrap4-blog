@@ -8,19 +8,7 @@
       </a>
     </h2>
 
-    <p class="metadata">
-      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-        {{ .Date.Format $dateFormat }}
-      </time>
-      
-      {{ i18n "authoredBy" }}
-      
-      {{ .Params.author | default .Site.Params.author }}
-      {{ if or (.Params.categories) (.Params.tags) }}
-        {{ i18n "postedIn" }}
-        {{ partial "meta-terms.html" . }}
-      {{ end }}
-    </p>
+    {{ partial "post-meta.html" . }}
   </header>
   
   <section class="content">
