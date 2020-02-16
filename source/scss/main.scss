@@ -7,6 +7,7 @@ $bg-dark: #2965b4;
 $bg-light: #519cff;
 $site-width: 880px;
 $shadow: #333;
+$shadow-light: #0003;
 $border-radius: 8px;
 $trans: all .2s cubic-bezier(.79,.14,.15,.86);
 
@@ -63,6 +64,8 @@ h2, .h2 { font-size: 1.3rem; }
 h3, .h3 { font-size: 1.1rem; }
 h4, .h4, h5, .h5 { font-size: 1rem; }
 
+iframe { margin: 0 0 1rem 0; }
+
 code {
   // Hack, 'Fira Mono' + Bootstrap defaults
   font-family: Hack,'Fira Mono',SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
@@ -89,6 +92,10 @@ code {
   font-family: Hack, monospace, 'Courier New', Courier;
   color: #fff;
   text-shadow: #333 1px 1px 4px;
+
+  * {
+    cursor: default;
+  }
 }
 
 .masthead {
@@ -104,17 +111,21 @@ code {
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
     .avatar {
+      padding: 0.2rem;
+      width: 5.2rem;
+      height: 5.2rem;
+      background: radial-gradient(#519cff, #2965b4);
       border-radius: 100%;
+      box-shadow: 0 0 1px #000 inset;
       
       .avatar-img {
         background: transparent url("https://i.imgur.com/EqHv0We.jpg") center/100% no-repeat;
-        width: 5rem;
-        height: 5rem;
+        height: 4.8rem;
         border-radius: 100%;
-        box-shadow: 0 0 3px #000;
+        box-shadow: 0 0 2px #000 inset;
 
           background-size: 120%;
-          background-position: 30% -10%;
+          background-position: 30% 0;
       }
     }
 
@@ -185,6 +196,10 @@ code {
     margin: 0;
     font-size: 0.8rem;
     color: #999;
+
+    .fa.fa-tag {
+      vertical-align: bottom;
+    }
   }
 
   .content {
@@ -221,7 +236,13 @@ code {
 // Page elements
 .highlight {
   margin: 0 0 1rem;
-  background: #00000002;
+
+  pre {
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 3px 0 #0003;
+    white-space: pre-wrap;
+  }
 }
 
 
@@ -303,4 +324,12 @@ code {
   width: 640px;
   max-width: 100%; 
   height: 311px;
+}
+
+.map-embed {
+  width: 100%;
+  min-height: 18rem;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 0 3px 1px $shadow-light;
 }
