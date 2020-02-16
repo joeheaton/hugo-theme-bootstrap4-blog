@@ -7,9 +7,7 @@
     <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
-    {{ block "schema-dot-org" . }}
-      <!-- schema.org metadata differs for Nodes and Pages -->
-    {{ end }}
+    {{ partial "schema-dot-org.html" . }}
 
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
