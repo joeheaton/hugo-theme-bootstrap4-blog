@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
   <head>
     {{ partial "head-meta.html" . }}
@@ -12,7 +12,7 @@
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
 
-    {{ "<!-- RSS 2.0 feed -->" | safeHTML }}
+    {{ "<!-- rss 2.0 feed -->" | safeHTML }}
     {{ with .OutputFormats.Get "rss" -}}
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
