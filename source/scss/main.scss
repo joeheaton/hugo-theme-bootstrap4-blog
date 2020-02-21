@@ -129,9 +129,13 @@ code {
       }
     }
 
-    .sharing-icons span:hover {
-      transition: $trans;
-      background: #fff;
+    .sharing-icons {
+      align-items: flex-start;
+
+      span:hover {
+        transition: $trans;
+        background: #fff;
+      }
     }
   }
 
