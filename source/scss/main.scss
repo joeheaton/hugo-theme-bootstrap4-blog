@@ -249,6 +249,13 @@ code {
   }
 }
 
+p > code {
+  padding: 0.1rem 0.2rem;
+  background: #333;
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px 0 #0003;
+}
+
 
 // Sharing Icons
 .sharing-icons {
