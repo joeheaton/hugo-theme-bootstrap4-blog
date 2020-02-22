@@ -12,11 +12,6 @@
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
 
-    {{ "<!-- rss 2.0 feed -->" | safeHTML }}
-    {{ with .OutputFormats.Get "rss" -}}
-      {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-    {{ end -}}
-
     {{ partial "head-custom.html" . }}
   </head>
 

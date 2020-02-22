@@ -4,18 +4,28 @@
 
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
-{{- .Site.Hugo.Generator -}}
+<meta name="twitter:dnt" content="on">
+{{ .Site.Hugo.Generator }}
 
-<!-- Colour -->
+{{ "<!-- Colour -->" | safeHTML }}
 <meta name="theme-color" content="{{ .Site.Params.BrowserColor }}">
-<!-- (Apple) -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- (Microsoft) -->
 <meta name="msapplication-TileColor" content="{{ .Site.Params.BrowserColor }}">
 
+{{ range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end -}}
+
+{{ with .OutputFormats.Get "rss" -}}
+  {{ "<!-- rss 2.0 feed -->" | safeHTML }}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
+{{- with .Site.Params.flattr_id -}}
 {{ "<!-- Flattr ID for the Flattr browser plug-in -->" | safeHTML }}
-{{- with .Site.Params.flattr_id -}}<meta name="flattr:id" content="{{ . }}">{{ end }}
+<meta name="flattr:id" content="{{ . }}">
+{{ end }}
 
 <link rel="icon" href="{{ .Site.BaseURL }}/images/favicon.png">
 
