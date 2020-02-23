@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div class="masthead-super d-flex flex-row justify-content-between">
+    <div class="masthead-super container d-flex flex-row justify-content-between">
       <div>
         {{ .Site.Params.tagline }}
       </div>
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div id="tallest"> <!-- Site container -->
+    <div id="tallest" class="container"> <!-- Site container -->
 
       {{ block "masthead" . }}
       <div class="masthead">
