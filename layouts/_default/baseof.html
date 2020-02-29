@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
+<html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns#" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
   <head>
     {{ partial "head-meta.html" . }}
 
