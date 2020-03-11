@@ -13,6 +13,10 @@
           <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
         {{ end }}
 
+        {{ if .Params.draft }}
+          <span>{{ safeHTML "&#128679;" }}</span>
+        {{ end }}
+
         <span>Posted</span>
         <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
           {{ .Date.Format $dayFormat | humanize }}
