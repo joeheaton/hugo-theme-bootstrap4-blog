@@ -14,7 +14,9 @@
         {{ end }}
 
         {{ if .Params.draft }}
-          <span>{{ safeHTML "&#128679;" }}</span>
+          <span title="Draft / Under construction">
+            {{ safeHTML "&#128679;" }}
+          </span>
         {{ end }}
 
         <span>Posted</span>
