@@ -71,6 +71,28 @@ code {
   font-family: Hack, 'Fira Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+img {
+  max-width: 100%;
+}
+
+figure {
+  background: $primary;
+  border-radius: $border-radius;
+  box-shadow: 1px 1px 3px $shadow;
+
+  img {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  figcaption {
+    padding: 0.4rem 0.8rem;
+    filter: invert(100%);
+
+    p {
+      margin: 0;
+}
+  }
+}
 
 #tallest.container {
   padding: 0;
