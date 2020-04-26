@@ -8,13 +8,14 @@ $bg-light: #519cff;
 $shadow: #333;
 $shadow-light: #0003;
 $border-radius: 8px;
-$trans: all .2s cubic-bezier(.79,.14,.15,.86);
+$trans: cubic-bezier(.79,.14,.15,.86);
 
 /*
  * Globals
  */
 
 html {
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Ubuntu, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --scrollbarBG: #CFD8DC;
   --thumbBG: #90A4AE;
 }
