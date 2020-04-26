@@ -155,7 +155,6 @@ figure {
       align-items: flex-start;
 
       span:hover {
-        transition: $trans;
         background: #fff;
       }
     }
@@ -238,9 +237,20 @@ figure {
   }
 
   &.single {
-    footer {
-      padding: 1rem 0;
-      border-top: 1px solid #4191ff;
+    .footer {
+      padding: 1rem 0 0;
+      margin: 2rem 0;
+      border-top: .05rem solid #e5e5e5;
+    }
+
+    .sharing-icons {
+      font-size: 1.6rem;
+
+      a {
+        span {
+          min-width: 2.2rem;
+        }
+      }
     }
   }
 
