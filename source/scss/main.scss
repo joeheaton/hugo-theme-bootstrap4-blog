@@ -238,6 +238,26 @@ figure {
   }
 
   &.single {
+    #TableOfContents {
+      ul {
+        padding-left: 0;
+        counter-reset: item;
+
+        ul {
+          padding-left: 1rem;
+        }
+
+        li {
+          list-style-type: none;
+
+          &:before {
+            content: counters(item, ".") " ";
+            counter-increment: item;
+          }
+        }
+      }
+    }
+
     .footer {
       padding: 1rem 0 0;
       margin: 2rem 0;
