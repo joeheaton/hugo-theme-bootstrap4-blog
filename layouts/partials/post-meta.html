@@ -7,12 +7,6 @@
     <!-- show metadata on posts -->
     {{ if ne .Params.type "page" }}
       {{ if not .Date.IsZero }}
-        <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
-        {{ $ageMonths := div (sub now.Unix .Date.Unix) 2592000 }}
-        {{ if gt $ageMonths 11 }}
-          <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
-        {{ end }}
-
         {{ if .Params.draft }}
           <span title="Draft / Under construction">
             {{ safeHTML "&#128679;" }}
@@ -51,5 +45,17 @@
         {{ .Params.lastmod.Format $monthFormat }}
         {{ .Params.lastmod.Format $yearFormat }}
       </time>
+    {{ end }}
+
+    <!-- if .Date or .Params.lastmod is over a year old -->
+    {{ $pageAge := .Date }}
+    {{ if .Params.lastmod }}
+      {{ $pageAge := . }}
+    {{ end }}
+
+    <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
+    {{ $ageMonths := div (sub now.Unix $pageAge.Unix) 2592000 }}
+    {{ if gt $ageMonths 11 }}
+      <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
     {{ end }}
 </p>
