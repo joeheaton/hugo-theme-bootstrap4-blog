@@ -31,7 +31,8 @@
       </div>
     </div>
 
-    <div id="tallest" class="container"> <!-- Site container -->
+    {{ "<!-- Site container -->" | safeHTML }}
+    <div id="tallest" class="container">
 
       {{ block "masthead" . }}
       <div class="masthead">
