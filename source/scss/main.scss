@@ -378,7 +378,7 @@ p > code {
 }
 
 /*
- * Specifics
+ * Accessibility (a11y)
  */
 
 .skip-to-main {
@@ -395,6 +395,15 @@ p > code {
     top: 0;
   }
 }
+
+@import "../fonts/OpenDyslexic-Regular.css";
+.dyslexia {
+  font-family: OpenDyslexic-Regular !important;
+}
+
+/*
+ * Specifics
+ */
 
  #disqus_thread {
   margin-top: 1rem;

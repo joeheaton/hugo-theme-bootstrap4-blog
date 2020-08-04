@@ -79,6 +79,10 @@
               <a class="nav-item" href="https://www.patreon.com/{{ .Site.Params.social.patreon }}" title="Patreon">
                 <span class="fab fa-patreon" aria-hidden="true"></span>
               </a>
+
+              <a class="nav-item" id="settings-toggle" target="_self" href="javascript: void(0)">
+                <span class="fas fa-cog"></span>
+              </a>
             </nav>
 
           </div>
@@ -163,6 +167,16 @@
         </p>
       </footer>
       {{ end }}
+    </div>
+
+    <div id="settings-slider">
+      <div class="close">
+        &#10060;
+      </div>
+
+      <p class="h1">Settings!</p>
+
+      <button id="a11y-dyslexia">Dyslexia mode</button>
     </div>
 
     <!--{{ partial "scripts.html" . }}-->
