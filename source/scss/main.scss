@@ -381,6 +381,21 @@ p > code {
  * Specifics
  */
 
+.skip-to-main {
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  font-size: 1rem;
+  background: #000;
+  color: #fff;
+  padding: 0.8rem;
+  z-index: 100;
+
+  &:focus {
+    top: 0;
+  }
+}
+
  #disqus_thread {
   margin-top: 1rem;
 }
