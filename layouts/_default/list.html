@@ -1,17 +1,17 @@
 {{ define "main" }}
 
-{{ $truncate := default true .Site.Params.truncate }}
-{{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
-{{ range $paginator.Pages }}
-  {{ if $truncate }}
-    {{ .Render "summary" }}
-  {{ else }}
-    {{ .Render "content" }}
-  {{ end }}
-{{ end }}
+  {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
 
-{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-  {{ partial "pagination.html" . }}
-{{ end }}
+  {{ range $paginator.Pages }}
+    {{ if .Site.Params.truncate }}
+      {{ .Render "summary" }}
+    {{ else }}
+      {{ .Render "content" }}
+    {{ end }}
+  {{ end }}
+
+  {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+    {{ partial "pagination.html" . }}
+  {{ end }}
 
 {{ end }}
