@@ -397,8 +397,13 @@ p > code {
 }
 
 @import "../fonts/OpenDyslexic-Regular.css";
+@import "../fonts/OpenDyslexic-Mono.css";
 .dyslexia {
   font-family: OpenDyslexic-Regular !important;
+
+  code {
+    font-family: OpenDyslexic-Mono !important;
+  }
 }
 
 /*
