@@ -6,18 +6,30 @@
 {{ "<!-- FontAwesome CDN -->" | safeHTML }}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
 
+{{ with .Site.Params.library.jquery_slim }}
 {{ "<!-- JQuery Slim via CDN -->" | safeHTML }}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+{{ end }}
 
+{{ with .Site.Params.library.jquery }}
 <!--{{ "<!-- JQuery via CDN -->" | safeHTML }}-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
+{{ end }}
+
+{{ with .Site.Params.library.jquery_slidereveal }}
 {{ "<!-- JQuery SlideReveal via CDN -->" | safeHTML }} <!-- https://github.com/nnattawat/slideReveal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slideReveal/1.1.2/jquery.slidereveal.min.js" crossorigin="anonymous"></script>
+{{ end }}
 
+{{ with .Site.Params.library.bootstrap_js }}
 {{ "<!-- Bootstrap JS via CDN -->" | safeHTML }}
 <script  src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{{ end }}
+
+{{ with .Site.Params.library.js_cookie }}
 {{ "<!-- JS-Cookie -->" | safeHTML }} <!-- https://github.com/js-cookie/js-cookie -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+{{ end }}
 
 {{ "<!-- DNS prefetch -->" | safeHTML }}
 {{ with .Site.Params.social.twitter }}
