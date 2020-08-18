@@ -273,6 +273,17 @@ figure {
           min-width: 2.2rem;
         }
       }
+
+      .sharethis {
+        .text {
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: -0.2rem 0 0 -0.4rem;
+          font-size: 0.8rem;
+          cursor: default;
+        }
+      }
     }
   }
 
