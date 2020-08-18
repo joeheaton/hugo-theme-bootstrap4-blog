@@ -9,6 +9,7 @@ $shadow: #333;
 $shadow-light: #0003;
 $border-radius: 8px;
 $trans: cubic-bezier(.79,.14,.15,.86);
+$mobile-width: 30em;
 
 /*
  * Globals
@@ -26,11 +27,9 @@ body {
   color: #333;
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
 
-@media (min-width: 48em) {
-  html {
-    font-size: 18px;
+  @media (max-width: 30em) {
+    padding: 0;
   }
 }
 
@@ -51,9 +50,9 @@ h6, .h6 {
   color: #333;
 
   a, a:hover, a:focus {
-    padding: 0 0.8% 0.2rem;
+    /* padding: 0 0.8% 0.2rem;
     border-top: 1px solid #4191FF;
-    border-bottom: 1px solid #4191FF;
+    border-bottom: 1px solid #4191FF; */
     color: #2965B4;
     text-decoration: none;
   }
@@ -100,7 +99,7 @@ figure {
 
 #tallest {
   border-radius: $border-radius;
-  box-shadow: 0 0 3px 1px #333;
+  //box-shadow: 0 0 3px 1px #333;
 }
 
 .container {
@@ -121,6 +120,9 @@ figure {
 }
 
 .masthead {
+  box-shadow: 0 0 .25rem $shadow;
+  border-radius: $border-radius;
+
   .banner {
     min-height: 180px;
     padding: 1%;
@@ -128,7 +130,6 @@ figure {
     background-image: url("https://i.imgur.com/umisqTL.png");
     background-position: center -12rem;
     background-size: cover;
-    border-bottom: 1px solid #000;
     border-radius: $border-radius $border-radius 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
@@ -163,6 +164,7 @@ figure {
   .blog-nav {
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
     color: #fff;
+    border-radius: 0 0 $border-radius $border-radius;
 
     /* Nav links */
     .nav-link {
@@ -178,8 +180,15 @@ figure {
 }
 
 #main {
-  background: #fff;
+  background: transparent;
   padding-top: 1rem;
+  
+  @media (max-width: 30em) {
+    &.container {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
 }
 
 .sidebar {
@@ -189,11 +198,17 @@ figure {
 
 /* Pagination */
 .blog-pagination {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   
   & > .btn {
     margin: 0 1rem 0 0;
+    background: #fff;
     border-radius: 2rem;
+    box-shadow: 0 0 3px $shadow;
+  }
+
+  .btn-outline-primary:hover {
+    color: $bg-dark;
   }
 }
 
@@ -205,14 +220,22 @@ figure {
 .blog-post {
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 1rem 0;
+  padding: 1rem 1rem 0;
+  border-radius: 0.4rem;
+  background: #fff;
+  box-shadow: 0 0 .25rem $shadow;
 
   &:first-child {
-    margin-top: 0.6rem;
+    margin-top: 0;
   }
 
-  &:not(:last-child) {
+  /*&:not(:last-child) {
     border-bottom: 1px dashed #aaa;
+  }*/
+
+  h2 {
+    font-weight: bold;
   }
 
   .description {
@@ -226,6 +249,7 @@ figure {
 
     .fa.fa-tag {
       vertical-align: bottom;
+      color: $bg-dark;
     }
   }
 
@@ -260,13 +284,13 @@ figure {
     }
 
     .footer {
-      padding: 1rem 0 0;
       margin: 2rem 0;
       border-top: .05rem solid #e5e5e5;
     }
 
     .sharing-icons {
       font-size: 1.6rem;
+      margin: 1rem 0;
 
       a {
         span {
@@ -288,8 +312,6 @@ figure {
   }
 
   &.list {
-    font-size: 0.8rem;
-
     .content {
       margin: 0.8rem 0;
     }
@@ -376,15 +398,33 @@ p > code {
 
 #footer {
   padding: 1rem 0;
-  margin: 0 auto 1rem;
-  font-size: 0.8rem;
+  margin: 1rem auto 1rem;
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
-  border-radius: 0 0 $border-radius $border-radius;
+  border-radius: $border-radius;
+  box-shadow: 0 0 3px $shadow;
 
   p:last-child {
     margin-bottom: 0;
+  }
+}
+
+/*
+ * Settings slider
+ */
+
+#settings-slider {
+  padding: 1rem;
+  background: #404351;
+  box-shadow: inset 3px 0 6px #333;
+  
+  p {
+    color: #fff;
+  }
+
+  .h1 {
+    margin: 0 0 1rem 0;
   }
 }
 
@@ -407,9 +447,10 @@ p > code {
   }
 }
 
-@import "../fonts/OpenDyslexic-Regular.css";
-@import "../fonts/OpenDyslexic-Mono.css";
 .dyslexia {
+  @import "../fonts/OpenDyslexic-Regular.css";
+  @import "../fonts/OpenDyslexic-Mono.css";
+
   font-family: OpenDyslexic-Regular !important;
 
   code {
@@ -423,6 +464,10 @@ p > code {
 
  #disqus_thread {
   margin-top: 1rem;
+}
+
+.twitter-timeline {
+  min-height: 60rem !important;
 }
 
 .twitter-tweet {
@@ -439,6 +484,6 @@ p > code {
   width: 100%;
   min-height: 18rem;
   border: 0;
-  border-radius: 8px;
+  border-radius: $border-radius;
   box-shadow: 0 0 3px 1px $shadow-light;
 }
