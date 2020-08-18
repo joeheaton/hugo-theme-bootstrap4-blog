@@ -1,0 +1,42 @@
+{{ block "footer" . }}
+<footer id="footer">
+
+    <div class="bigbtns">
+        <div id="bigbtns_firefoxbtn">
+        <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
+            <img src="{{ .Site.BaseURL }}/images/firefox2019.svg" alt="firefox">
+        </a>
+        
+        <span>
+            Developed on 
+            <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
+            Firefox
+            </a>
+        </span>
+        </div>
+        
+        <div id="bigbtns_builtwithhtml5">
+        <a href="https://w3.org/html5" title="World Wide Web Consortium and Web Hypertext Application Technology Working Group's Hypertext Markup Language specification version 5, or just: W3C &amp; WHATWG's HTML5" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="#E34F26" d="M71,460 L30,0 481,0 440,460 255,512"/>
+            <path fill="#EF652A" d="M256,472 L405,431 440,37 256,37"/>
+            <path fill="#EBEBEB" d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"/>
+            <path fill="#FFF" d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"/>
+            </svg>
+        </a>
+        
+        <span>Flash Killer, HTML5</span>
+        </div>
+    </div>
+
+    <p>
+        {{ if .Site.Copyright }}
+        {{ .Site.Copyright | markdownify }}.
+        {{ else }}
+        Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>, expanded upon by {{ .Site.Author }}.
+        {{ end }}
+        <a href="{{ .Site.BaseURL }}/privacy" target="_self">Privacy policy</a>.
+    </p>
+
+</footer>
+{{ end }}
