@@ -2,6 +2,19 @@
 var html = document.getElementsByTagName("html")[0];
 var head = document.getElementsByTagName("head")[0];
 
+/*
+ * Annotate external hyperlinks
+ */
+
+function annotate_external_links() {
+    var hyperlinks = document.getElementsByTagName("a");
+    for (var i = 0; i < hyperlinks.length; i++) {
+        if (hyperlinks[i].host !== window.location.host) {
+            hyperlinks[i].classList.add("external");
+        }
+    }
+}
+
 
 /*
  * Document Ready
@@ -9,6 +22,7 @@ var head = document.getElementsByTagName("head")[0];
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("Document ready!");
+    annotate_external_links();
 });
 
 
