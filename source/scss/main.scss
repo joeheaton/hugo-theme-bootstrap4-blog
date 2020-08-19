@@ -188,13 +188,11 @@ figure {
 
 #main {
   background: transparent;
-  padding-top: 1rem;
+  padding: 1rem 0.5rem 0;
   
-  @media (max-width: 30em) {
     &.container {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
