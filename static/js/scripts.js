@@ -52,10 +52,14 @@ $(document).ready(function() {
     var a11y_dyslexia = document.getElementById("a11y-dyslexia");
     if (a11y_dyslexia) {
         a11y_dyslexia.addEventListener("click", function(event) {
-            if (Cookies.get("dyslexia") == "true") {
+            if (document.body.classList.contains("dyslexia")) {
                 a11y_dyslexia_disable();
+                a11y_dyslexia.classList.remove("btn-success");
+                a11y_dyslexia.classList.add("btn-primary");
             } else {
                 a11y_dyslexia_enable();
+                a11y_dyslexia.classList.remove("btn-primary");
+                a11y_dyslexia.classList.add("btn-success");
             }
         });
     }
