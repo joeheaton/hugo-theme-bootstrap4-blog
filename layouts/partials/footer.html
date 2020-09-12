@@ -29,11 +29,11 @@
         </div>
     </div>
 
-    <p>
+    <p id="copyright">
         {{ if .Site.Copyright }}
-        {{ .Site.Copyright | markdownify }}.
+          {{ .Site.Copyright | markdownify }}.
         {{ else }}
-        Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>, expanded upon by {{ .Site.Author }}.
+          Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>, expanded upon by {{ .Site.Author }}.
         {{ end }}
         <a href="{{ .Site.BaseURL }}/privacy" target="_self">Privacy policy</a>.
     </p>
