@@ -23,12 +23,14 @@
       {{ end }}
 
       {{ if ne .Params.type "page" }}
-        <span>Posted</span>
-        <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
-          {{ .Date.Format $dayFormat | humanize }}
-          {{ .Date.Format $monthFormat }}
-          {{ .Date.Format $yearFormat }}
-        </time>
+        {{ if .Title }} <!-- Hide "posted on" when title is the date -->
+          <span>Posted</span>
+          <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
+            {{ .Date.Format $dayFormat | humanize }}
+            {{ .Date.Format $monthFormat }}
+            {{ .Date.Format $yearFormat }}
+          </time>
+        {{ end }} <!-- /if not .Title -->
       {{ end }} <!-- /if not .Date.IsZero -->
       
       {{ if .Site.Params.showAuthor }}
