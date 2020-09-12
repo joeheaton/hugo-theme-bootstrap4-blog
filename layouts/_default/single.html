@@ -38,11 +38,10 @@
       {{ partial "sharing-icons.html" . }}
     {{ end }}
 
-    {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
+    {{ if and (.Site.DisqusShortname) (ne .Site.Params.comments false) }}
       {{ template "_internal/disqus.html" . }}
     {{ end }}
   </footer>
 
 </article> <!-- /.blog-post -->
-
 {{ end }}
