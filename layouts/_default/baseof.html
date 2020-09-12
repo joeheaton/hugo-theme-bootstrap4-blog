@@ -15,7 +15,7 @@
     {{ partial "head-links.html" . }}
 
     {{ "<!-- Primary CSS -->" | safeHTML }}
-    <link href="{{ "css/style.css" | absURL }}" rel="stylesheet" {{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style}}" crossorigin="anonymous"{{ end }}>
+    <link href="{{ "css/style.css" | absURL }}" rel="stylesheet" {{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style }}" crossorigin="anonymous"{{ end }}>
 
     {{ partial "schema-dot-org.html" . }}
 
