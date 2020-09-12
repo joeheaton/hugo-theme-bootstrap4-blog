@@ -67,7 +67,7 @@
 
     <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
     {{ $ageMonths := div (sub now.Unix $pageAge.Unix) 2592000 }}
-    {{ if not (eq .Type "page") }}
+    {{ if (eq .Type "posts") }}
       {{ if gt $ageMonths 11 }}
         <i class="fas fa-exclamation-triangle" title="Keep in mind this article is over a year old!"></i>
       {{ end }}
