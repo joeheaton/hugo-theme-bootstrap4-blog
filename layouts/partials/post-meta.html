@@ -3,6 +3,16 @@
 {{ $monthFormat := default "Jan" (index .Site.Params "date_format") }}
 {{ $yearFormat := default "2006" (index .Site.Params "date_format") }}
 
+<h1>
+  <a href="{{ .Permalink }}" title="{{ .Title }}" target="_self">
+    {{ if .Title }}
+      {{ .Title }}
+    {{ else }}
+      {{ .Date.Format (default "2 Jan 2006" (index .Site.Params "date_format")) }}
+    {{ end }}
+  </a>
+</h1>
+
 <p class="metadata">
     <!-- show metadata on posts -->
     {{ if not .Date.IsZero }}
