@@ -1,46 +1,64 @@
 <!-- Fork https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates/shortcodes -->
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
-    {{- if .Get "link" -}}
+    <div class="image">
+        {{- if .Get "link" -}}
         <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
-    {{- end }}
+        {{- end }}
 
-    <img src="{{ .Get "src" }}"
-         {{- if or (.Get "alt") (.Get "caption") }}
-         alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-         {{- end -}}
-         {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-         {{- with .Get "height" }} height="{{ . }}"{{ end -}}
-    >
+            <picture>
+                {{- if and (.Get "src") (eq (urls.Parse (.Get "src")).Host .Site.BaseURL) -}}
+                <source srcset="{{ .Get "src" | replaceRE "^(.*?)\\.[a-zA-Z0-9]+$" "$1" }}.avif" type="image/avif">
+                <source srcset="{{ .Get "src" | replaceRE "^(.*?)\\.[a-zA-Z0-9]+$" "$1" }}.webp" type="image/webp">
+                {{- end -}}
 
-    {{- if .Get "link" }}
-        </a>
-    {{ end -}}
+                <img src="{{ .Get "src" }}"
+                    {{- if or (.Get "alt") (.Get "caption") }}
+                    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+                    {{- end -}}
+                    {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+                    {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+                >
+            </picture>
 
-    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
-        <figcaption>
-            {{ with (.Get "title") -}}
-                <div>{{ . }}</div>
+            {{- if (.Get "copyright") -}}
+            <p class="copyright text-right">
+                {{ with (.Get "copyright") -}}
+                &copy; {{- . -}}
+                {{- end -}}
+            </p>
             {{- end -}}
 
-            {{- if or (.Get "caption") (.Get "attr") -}}
-            <p>
-                {{- .Get "caption" | markdownify -}}
+        {{- if .Get "link" }}
+        </a>
+        {{ end -}}
+    </div>
 
-                {{- if .Get "attr" }}
-                    &ndash;
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "cite") (.Get "copyright") -}}
+    <figcaption>
+        {{ with (.Get "title") -}}
+            <b>{{ . }}</b>
+        {{- end -}}
 
-                    {{- with .Get "attrlink" }}
-                        <a href="{{ . }}">
-                    {{- end -}}
-                    
-                    {{- .Get "attr" | markdownify -}}
-                    
-                    {{- if .Get "attrlink" }}
-                        </a>
-                    {{- end }}
+        {{- if or (.Get "caption") (.Get "cite") -}}
+        <p>
+            {{- .Get "caption" | markdownify -}}
+
+            {{- if .Get "cite" }}
+                &ndash;
+
+                {{- with .Get "citelink" }}
+                    <a href="{{ . }}">
+                {{- end -}}
+                
+                {{- .Get "cite" | markdownify -}}
+                
+                {{- if .Get "citelink" }}
+                    </a>
                 {{- end }}
-            </p>
             {{- end }}
-        </figcaption>
+        </p>
+        {{- end }}
+
+    </figcaption>
     {{- end }}
 </figure>
