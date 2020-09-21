@@ -31,6 +31,8 @@
       {{ partial "sharing-icons.html" . }}
     {{ end }}
 
+    {{ partial "vcard.html" . }}
+    
     {{ if and (.Site.DisqusShortname) (ne .Site.Params.comments false) }}
       {{ template "_internal/disqus.html" . }}
     {{ end }}

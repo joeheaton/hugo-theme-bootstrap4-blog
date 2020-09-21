@@ -1,0 +1,55 @@
+<section class="vcard card mb-3 border border-primary" itemscope itemtype="http://schema.org/Person">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" class="card-img-top" itemprop="image">
+        </div>
+
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="vcard-name card-title font-weight-bold" itemprop="name">
+                    {{ if and (.Site.Params.me.name.first) (.Site.Params.me.name.last) }}
+                        <span class="vcard-firstname" itemprop="givenName">
+                            {{ with .Site.Params.me.name.first }}{{ . }}{{ end }}
+                        </span>
+
+                        <span class="vcard-lastname" itemprop="FamilyName">
+                            {{ with .Site.Params.me.name.last }}{{ . }}{{ end }}
+                        </span>
+                    {{ else }}
+                        <span class="vcard-fullname">
+                            {{ .Site.Params.me.name.full }}
+                        </span>
+                    {{ end }}
+                </h5>
+
+                <address>
+                    <p class="vcard-homepage">
+                        {{ with .Site.Params.me.url }}
+                            <a href="{{ . }}" itemprop="url">
+                                {{ . }}
+                            </a>
+                        {{ else }}
+                            <a href="{{ .Site.BaseURL }}" itemprop="url">
+                                {{ .Site.BaseURL }}
+                            </a>
+                        {{ end }}
+                    </p>
+
+                    <p class="vcard-email">
+                        <a href="mailto:{{ .Site.Params.me.email }}" itemprop="email">
+                            {{ .Site.Params.me.email }}
+                        </a>
+                    </p>
+                </address>
+
+                <p class="card-text">
+                    <small class="text-muted">
+                        <a href="{{ .Site.BaseURL }}/{{ .Site.Params.me.email | htmlEscape }}.vcf">
+                            Save to contacts
+                        </a>
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
