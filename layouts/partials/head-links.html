@@ -1,5 +1,23 @@
+{{ "<!-- Bits n bobs -->" | safeHTML }}
+<base target="_blank">
+<link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ .Site.BaseURL }}/images/favicon.png">
 <link rel="license" href="#copyright">
+
+{{ "<!-- Preload -->" | safeHTML }}
+<link href="{{ "css/style.css" | absURL }}" rel="preload" as="style">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" as="style">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="preload" as="style">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-regular-400.woff2" rel="preload" as="font">
+
+{{ "<!-- Web App Manifest -->" | safeHTML }}
+<!--<link rel="manifest" href="{{ .Site.BaseURL }}/manifest.webmanifest">-->
+
+{{ "<!-- DNS prefetch -->" | safeHTML }}
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+{{ with .Site.Params.social.twitter }}
+<link rel="dns-prefetch" href="https://platform.twitter.com">
+{{- end -}}
 
 {{ "<!-- Bootstrap CDN -->" | safeHTML }}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -34,8 +52,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 {{ end }}
 
-{{ "<!-- DNS prefetch -->" | safeHTML }}
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-{{ with .Site.Params.social.twitter }}
-<link rel="dns-prefetch" href="https://platform.twitter.com">
+{{ if .Site.Params.CookieConsent }}
+{{ "<!-- Cookie notification bar -->" | safeHTML }}
+<!--<script async src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>-->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"> <!-- local alternative static/cookieconsent.css? -->
 {{ end }}

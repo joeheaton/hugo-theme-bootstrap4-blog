@@ -1,0 +1,66 @@
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+
+<script>
+// https://www.osano.com/cookieconsent/documentation/javascript-api/
+window.cookieconsent.initialise({
+  //container: document.getElementById("content"),
+  autoOpen: true,
+  cookie: {
+    name: "cookieplease",
+    expiryDays: 365,
+    secure: true,
+  },
+  content: {
+    header: 'Cookies used on the website!',
+    message: "This website uses cookies.",
+    dismiss: 'Got it!',
+    allow: 'Allow cookies',
+    deny: 'Decline',
+    link: 'Learn more',
+    href: '{{ "privacy" | absURL }}',
+    close: '&#x274c;',
+    policy: 'Cookie Policy',
+    target: '_self',
+  },
+  dismissOnScroll: false,
+  dismissOnTimeout: false,
+  location: false,
+  palette: {
+    popup: {
+      background: '#edeff5',
+      text: '#838391',
+      link: '#000'
+    },
+    button: {
+      background: '#4b81e8',
+      border: 'transparent',
+      text: '#fff'
+    },
+    highlight: {
+      background: 'transparent',
+      border: 'transparent',
+      text: '#000000'},
+  },
+  position: "bottom-left",
+  theme: "edgeless",
+  type: "opt-in",
+  revokable: true,
+  onInitialise: function(status) {
+    if (this.options.type == 'opt-in' && this.hasConsented()) {
+      // enable cookies
+    }
+  },
+  onStatusChange: function(status, chosenBefore) {
+    console.log(this.hasConsented() ? "cookieconsent: enable cookies" : "cookieconsent: disable cookies");
+
+    if (this.options.type == 'opt-in' && this.hasConsented()) {
+      // enable cookies
+    }
+  },
+  onRevokeChoice: function() {
+    if (this.options.type == 'opt-in') {
+      // disable cookies
+    }
+  }
+});
+</script>

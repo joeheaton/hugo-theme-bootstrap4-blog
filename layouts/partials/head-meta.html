@@ -1,11 +1,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{ .Site.Hugo.Generator }}
 
+{{ "<!-- OpenGraph -->" | safeHTML }}
 {{ template "_internal/opengraph.html" . }}
+
+{{ "<!-- Twitter -->" | safeHTML }}
 {{ template "_internal/twitter_cards.html" . }}
 <meta name="twitter:dnt" content="on">
-{{ .Site.Hugo.Generator }}
 
 {{ "<!-- Colour -->" | safeHTML }}
 <meta name="theme-color" content="{{ .Site.Params.BrowserColor }}">
@@ -13,8 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="msapplication-TileColor" content="{{ .Site.Params.BrowserColor }}">
 
+{{ "<!-- Formats -->" | safeHTML }}
 {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ printf `<link rel="%s" type="%s" title="%s" href="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end -}}
 
 {{- with .Site.Params.flattr_id -}}

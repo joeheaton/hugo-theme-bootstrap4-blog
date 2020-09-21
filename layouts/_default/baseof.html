@@ -2,17 +2,10 @@
 <html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns#" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
   <head>
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-    <link rel="canonical" href="{{ .Permalink }}">
-    <base target="_blank">
 
-    {{ partial "head-meta.html" . }}
+    {{- partial "head-meta.html" . }}
 
-    {{ "<!-- Preload -->" | safeHTML }}
-    <link href="{{ "css/style.css" | absURL }}" rel="preload" as="style">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="preload" as="style">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="preload" as="style">
-
-    {{ partial "head-links.html" . }}
+    {{- partial "head-links.html" . }}
 
     {{ "<!-- Primary CSS -->" | safeHTML }}
     <link href="{{ "css/style.css" | absURL }}" rel="stylesheet" {{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style }}" crossorigin="anonymous"{{ end }}>
