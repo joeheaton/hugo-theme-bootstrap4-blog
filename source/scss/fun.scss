@@ -14,11 +14,11 @@
         font-size: 14px;
         font-family: sans-serif;
         font-weight: 600;
-        text-shadow: 0 1px #000;
+        text-shadow: 0 1px #333;
         padding: 0.1em;
         margin: 0.2em 0.4em 0.2em 0;
         border-radius: 3px;
-        box-shadow: 0 0 2px 0 #000;
+        box-shadow: 0 0 2px 0 #333;
         vertical-align: middle;
     
 
@@ -73,12 +73,14 @@
 }
 
 #bigbtns_firefoxbtn {
-    background-color: #5d80bb;
+    background: linear-gradient(to bottom, #962BB9 0%, #4D1A69 100%) repeat scroll 0 0 #962BB9;
+}
+
+#bigbtns_hostedbtn {
     background: linear-gradient(to bottom, #5d80bb 0%, #253c76 100%) repeat scroll 0 0 #5d80bb;
 }
 
 #bigbtns_builtwithhtml5 {
-    background-color: #f16529;
     background: linear-gradient(to bottom, #f16529 0%, #e44d26 100%) repeat scroll 0 0 #f16529;
 }
 

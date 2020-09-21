@@ -2,14 +2,17 @@
  * Vars
  */
 
-$primary: #2d2b38;
-$bg-dark: #2965b4;
-$bg-light: #519cff;
+$site-bg: #606578;
+$site-bg-dark: #24262d;
+$text-primary: #2d2b38;
+$text-primary-dark: #d8d8d8;
+$scheme: #2965B4;
 $shadow: #333;
+$content-bg: #fff;
+$content-bg-dark: #2f2f2f;
 $shadow-light: #0003;
 $border-radius: 8px;
-$trans: cubic-bezier(.79,.14,.15,.86);
-$mobile-width: 30em;
+$screen-small: 30em;
 
 /*
  * Globals
@@ -24,13 +27,18 @@ html {
 
 body {
   padding: 0 0.5rem;
-  background: #606578;
   color: #333;
+  background: $site-bg;
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 
-  @media (max-width: 30em) {
+  @media (max-width: $screen-small) {
     padding: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $site-bg-dark;
+    color: $text-primary-dark;
   }
 }
 
@@ -43,8 +51,14 @@ a:active {
 
 p a.external,
 figure a.external {
-  background: transparent url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%23fff' stroke='%2336c' d='M1.5 4.518h5.982V10.5H1.5z'/%3E%3Cpath fill='%2336c' d='M5.765 1H11v5.39L9.427 7.937l-1.31-1.31L5.393 9.35l-2.69-2.688 2.81-2.808L4.2 2.544z'/%3E%3Cpath fill='%23fff' d='M9.995 2.004l.022 4.885L8.2 5.07 5.32 7.95 4.09 6.723l2.882-2.88-1.85-1.852z'/%3E%3C/svg%3E") top right no-repeat;
-  padding-right: 12px;
+  background: transparent url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='external-link-alt' class='svg-inline--fa fa-external-link-alt fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='cornflowerblue' d='M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z'%3E%3C/path%3E%3C/svg%3E") top right no-repeat;
+  background-size: 10px;
+  padding-right: 10px;
+
+  &.mailto {
+    background: transparent url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='far' data-icon='envelope' class='svg-inline--fa fa-envelope fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='cornflowerblue' d='M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z'%3E%3C/path%3E%3C/svg%3E") top right no-repeat;
+    background-size: 10px;
+  }
 }
 
 h1, .h1,
@@ -54,7 +68,6 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   font-weight: normal;
-  color: #333;
 
   a, a:hover, a:focus {
     /* padding: 0 0.8% 0.2rem;
@@ -65,7 +78,7 @@ h6, .h6 {
   }
 }
 
-h1, .h1 { font-size: 1.6rem; }
+h1, .h1 { font-size: 1.4rem; }
 h2, .h2 { font-size: 1.3rem; }
 h3, .h3 { font-size: 1.1rem; }
 h4, .h4, h5, .h5 { font-size: 1rem; }
@@ -82,21 +95,36 @@ img {
 }
 
 figure {
-  background: $primary;
+  background: $text-primary;
   border-radius: $border-radius;
   box-shadow: 1px 1px 3px $shadow;
+
+  b, p {
+    color: #fff;
+    margin: 0;
+  }
 
   img {
     border-radius: $border-radius $border-radius 0 0;
   }
 
   figcaption {
+    background: #2d2b38;
     padding: 0.4rem 0.8rem;
-    filter: invert(100%);
+    border-radius: 0 0 $border-radius $border-radius;
+  }
 
-    p {
-      margin: 0;
-    }
+  .image {
+    position: relative;
+    text-align: center;
+    
+    .copyright {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0.2rem;
+      font-size: 0.6rem;
+    }  
   }
 }
 
@@ -190,7 +218,7 @@ figure {
   background: transparent;
   padding: 1rem 0.5rem 0;
   
-    &.container {
+  &.container {
     padding-left: 0;
     padding-right: 0;
   }
@@ -208,12 +236,13 @@ figure {
   & > .btn {
     margin: 0 1rem 0 0;
     background: #fff;
+    border-color: transparent;
     border-radius: 2rem;
     box-shadow: 0 0 3px $shadow;
   }
 
   .btn-outline-primary:hover {
-    color: $bg-dark;
+    color: $scheme;
   }
 }
 
@@ -228,8 +257,15 @@ figure {
   margin: 1rem 0;
   padding: 1rem 1rem 0;
   border-radius: 0.4rem;
-  background: #fff;
   box-shadow: 0 0 .25rem $shadow;
+
+  @media (prefers-color-scheme: light) {
+    background: $content-bg;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $content-bg-dark;
+  }
 
   &:first-child {
     margin-top: 0;
@@ -254,7 +290,7 @@ figure {
 
     .fa.fa-tag {
       vertical-align: bottom;
-      color: $bg-dark;
+      color: $scheme;
     }
   }
 
@@ -289,8 +325,8 @@ figure {
     }
 
     .footer {
-      margin: 2rem 0;
-      border-top: .05rem solid #e5e5e5;
+      margin: 0;
+      //border-top: .05rem solid #e5e5e5;
     }
 
     .sharing-icons {
@@ -313,12 +349,6 @@ figure {
           cursor: default;
         }
       }
-    }
-  }
-
-  &.list {
-    .content {
-      margin: 0.8rem 0;
     }
   }
 
@@ -390,19 +420,17 @@ p > code {
 .fa-whatsapp { color: #25d366; }
 .fa-discord { color: #7289DA; }
 .fa-patreon { color: rgb(232, 91, 70); }
+.fa-kofi { color: #29ABE0; }
 .fa-github { color: #000; }
 .fa-envelope { color: #777; }
 
-.fa-exclamation-triangle {
-  color: gold;
-}
+.fa-exclamation-triangle { color: gold; }
 
 /*
  * Footer
  */
 
 #footer {
-  padding: 1rem 0;
   margin: 1rem auto 1rem;
   text-align: center;
   background-color: #f9f9f9;
@@ -412,6 +440,16 @@ p > code {
 
   p:last-child {
     margin-bottom: 0;
+  }
+
+  & > .row {
+    padding: 0 0 1rem;
+    margin: 1rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $content-bg-dark;
+    border-color: $shadow;
   }
 }
 
@@ -453,14 +491,15 @@ p > code {
 }
 
 .dyslexia {
-  @import "../fonts/OpenDyslexic-Regular.css";
-  @import "../fonts/OpenDyslexic-Mono.css";
-
   font-family: OpenDyslexic-Regular !important;
 
   code {
     font-family: OpenDyslexic-Mono !important;
   }
+}
+
+.vcard {
+  
 }
 
 /*
@@ -480,9 +519,11 @@ p > code {
 }
 
 .youtube-player {
+  display: block;
   width: 640px;
   max-width: 100%; 
-  height: 311px;
+  height: 360px;
+  margin: 0 auto;
 }
 
 .map-embed {
