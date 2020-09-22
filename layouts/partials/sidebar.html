@@ -1,29 +1,31 @@
 <aside class="col-sm-4 ml-auto sidebar">
-  {{ if and (.Site.Params.sidebar) (isset .Site.Params.sidebar "about") }}
-  <!--<section class="sidebar-module sidebar-module-inset">
-    <h4>{{ i18n "about" }}</h4>
-    <p dir="auto">{{ .Site.Params.sidebar.about | markdownify }}</p>
-  </section>-->
-  {{ end }}
-
-  {{ if .Site.Params.sidebar }}
-    {{/* {{ partialCached "recent.html" .}} */}}
+  {{ if and .Site.Params.sidebar.about .Site.Params.me.bio }}
+    <section class="sidebar-blob">
+      <h4>
+        {{ i18n "about" }}
+      </h4>
+      
+      {{ .Site.Params.me.bio | markdownify }}
+    </section>
   {{ end }}
 
   {{ with .Site.Menus.sidebar }}
-  <section class="sidebar-module">
-    <h4>{{ i18n "links" }}</h4>
-    <ol class="list-unstyled">
-      {{ range . }}
-      <li><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
-      {{ end }}
-    </ol>
-  </section>
+    <section class="sidebar-blob">
+      <h4>
+        {{ i18n "links" }}
+      </h4>
+
+      <ol class="list-unstyled">
+        {{ range . }}
+        <li><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ol>
+    </section>
   {{ end }}
 
   {{ if (isset .Site.Params.social "twitter") }}
-  <a class="twitter-timeline" data-dnt="true" data-height="98%" data-theme="light" href="https://twitter.com/{{ .Site.Params.social.twitter }}?ref_src=twsrc%5Etfw"></a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" data-dnt="true" data-height="98%" data-theme="light" href="https://twitter.com/{{ .Site.Params.social.twitter }}?ref_src=twsrc%5Etfw"></a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   {{ end }}
 
 </aside><!-- /.blog-sidebar -->
