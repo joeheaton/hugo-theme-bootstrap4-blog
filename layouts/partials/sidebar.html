@@ -23,6 +23,22 @@
     </section>
   {{ end }}
 
+  {{ if .Site.Params.sidebar.tagcloud }}
+    <section class="sidebar-blob">
+      <h4>
+        Tags
+      </h4>
+
+      {{ partial "tag-cloud.html" . }}
+    </section>
+  {{ end }}
+
+  {{ if .Site.Params.sidebar.recent }}
+    <section class="sidebar-blob">
+      {{ partialCached "recent.html" . }}
+    </section>
+  {{ end }}
+
   {{ if (isset .Site.Params.social "twitter") }}
     <a class="twitter-timeline" data-dnt="true" data-height="98%" data-theme="light" href="https://twitter.com/{{ .Site.Params.social.twitter }}?ref_src=twsrc%5Etfw"></a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
