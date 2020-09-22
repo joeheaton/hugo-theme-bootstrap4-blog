@@ -4,6 +4,12 @@
 <link rel="icon" href="{{ .Site.BaseURL }}/images/favicon.png">
 <link rel="license" href="#copyright">
 
+{{ "<!-- DNS prefetch -->" | safeHTML }}
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+{{ with .Site.Params.social.twitter }}
+<link rel="dns-prefetch" href="https://platform.twitter.com">
+{{- end -}}
+
 {{ "<!-- Preload -->" | safeHTML }}
 <link href="{{ "css/style.css" | absURL }}" rel="preload" as="style">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" as="style">
@@ -12,12 +18,6 @@
 
 {{ "<!-- Web App Manifest -->" | safeHTML }}
 <!--<link rel="manifest" href="{{ .Site.BaseURL }}/manifest.webmanifest">-->
-
-{{ "<!-- DNS prefetch -->" | safeHTML }}
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-{{ with .Site.Params.social.twitter }}
-<link rel="dns-prefetch" href="https://platform.twitter.com">
-{{- end -}}
 
 {{ "<!-- Bootstrap CDN -->" | safeHTML }}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
