@@ -58,3 +58,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"> <!-- local alternative static/cookieconsent.css? -->
 {{ end }}
+
+{{ if .Site.Params.library.mermaid }}
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js" integrity="sha512-ja+hSBi4JDtjSqc4LTBsSwuBT3tdZ3oKYKd07lTVYmCnTCor56AnRql00ssqnTOR9Ss4gOP/ROGB3SfcJnZkeg==" crossorigin="anonymous"></script>
+{{ end }}
