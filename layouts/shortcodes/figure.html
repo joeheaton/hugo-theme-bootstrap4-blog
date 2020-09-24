@@ -1,8 +1,8 @@
 <!-- Fork https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates/shortcodes -->
-<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+<figure class="{{ with .Get "class" }}{{ . }}{{ end }}">
     <div class="image">
         {{- if .Get "link" -}}
-        <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+        <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }} title="{{ with .Get "title" }}{{ . }} -> {{ end }}{{ with .Get "link" }}{{ . }}{{ end }}">
         {{- end }}
 
             <picture>
@@ -35,8 +35,18 @@
 
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "cite") (.Get "copyright") -}}
     <figcaption>
-        {{ with (.Get "title") -}}
+        {{- if .Get "link" -}}
+            {{- if .Get "link" -}}
+            <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }} title="{{ with .Get "title" }}{{ . }} -> {{ end }}{{ with .Get "link" }}{{ . }}{{ end }}">
+            {{- end }}
+            
+            {{ with (.Get "title") -}}
             <b>{{ . }}</b>
+            {{ end }}
+            
+            {{- if .Get "link" -}}
+            </a>
+            {{- end }}
         {{- end -}}
 
         {{- if or (.Get "caption") (.Get "cite") -}}
