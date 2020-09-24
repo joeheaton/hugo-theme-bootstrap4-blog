@@ -14,4 +14,8 @@
     {{ partial "pagination.html" . }}
   {{ end }}
 
+  {{ if .Site.Params.me }}
+    {{ partial "vcard.html" . }}
+  {{ end }}
+
 {{ end }}
