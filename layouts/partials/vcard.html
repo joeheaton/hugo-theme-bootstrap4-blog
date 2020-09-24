@@ -1,7 +1,7 @@
 <section class="vcard card mb-3 border border-primary" itemscope itemtype="http://schema.org/Person">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" class="card-img-top" itemprop="image">
+            <img src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" class="card-img" itemprop="image">
         </div>
 
         <div class="col-md-8">
@@ -22,8 +22,22 @@
                     {{ end }}
                 </h5>
 
-                <address>
+                <address class="vcard-address">
+                    <p class="vcard-email">
+                        <span>
+                            <b>E</b>mail: 
+                        </span>
+                        
+                        <a href="mailto:{{ .Site.Params.me.email }}" itemprop="email">
+                            {{ .Site.Params.me.email }}
+                        </a>
+                    </p>
+
                     <p class="vcard-homepage">
+                        <span>
+                            <b>W</b>eb:
+                        </span>
+
                         {{ with .Site.Params.me.url }}
                             <a href="{{ . }}" itemprop="url">
                                 {{ . }}
@@ -34,21 +48,21 @@
                             </a>
                         {{ end }}
                     </p>
-
-                    <p class="vcard-email">
-                        <a href="mailto:{{ .Site.Params.me.email }}" itemprop="email">
-                            {{ .Site.Params.me.email }}
-                        </a>
-                    </p>
                 </address>
 
-                <p class="card-text">
+                {{ if .Site.Params.me.bio }}
+                <div class="card-text vcard-bio">
+                    {{ .Site.Params.me.bio | markdownify }}
+                </div>
+                {{ end }}
+
+                <div class="card-text vcard-link">
                     <small class="text-muted">
                         <a href="{{ .Site.BaseURL }}/{{ .Site.Params.me.email | htmlEscape }}.vcf">
-                            Save to contacts
+                            &#128427; Save to contacts
                         </a>
                     </small>
-                </p>
+                </div>
             </div>
         </div>
     </div>
