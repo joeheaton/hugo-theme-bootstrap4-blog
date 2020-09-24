@@ -24,7 +24,7 @@
 
 {{ with .Site.Params.library.fontawesome }}
 {{ "<!-- FontAwesome CDN -->" | safeHTML }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 {{ end }}
 
 {{ with .Site.Params.library.jquery_slim }}
@@ -49,7 +49,7 @@
 
 {{ with .Site.Params.library.js_cookie }}
 {{ "<!-- JS-Cookie -->" | safeHTML }} <!-- https://github.com/js-cookie/js-cookie -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 {{ end }}
 
 {{ if .Site.Params.CookieConsent }}
