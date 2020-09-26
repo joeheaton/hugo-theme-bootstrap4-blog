@@ -1,11 +1,11 @@
 {{ "<!-- Structured data JSON-LD -->" | safeHTML }}
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "http://schema.org/",
     "@type": "{{ if eq .Type "page" }}Blog{{ else if eq .Type "posts" }}BlogPosting{{ else }}Page{{ end }}",
     "headline": "{{ substr .Title 0 110 }}",
-    "url": "{{ .Permalink }}",
-    {{- if eq .Type "posts" }}"wordCount": "{{ .WordCount }}",{{ end }}
+    "url": {{ printf "%s" .Permalink }},
+    {{ if eq .Type "posts" }}"wordCount": "{{ .WordCount }}",{{ end }}
     "author": {
       "@type": "Person",
       "name": "{{ .Params.author | default .Site.Params.author }}"
