@@ -43,8 +43,7 @@
           <div class="banner d-flex">
             {{ if .Site.Params.header_avatar }}
             <a href="{{ .Site.BaseURL }}" class="avatar" target="_self">
-              <div class="avatar-img">
-              </div>
+              <img class="avatar-img" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar">
             </a>
             {{ end }}
 
