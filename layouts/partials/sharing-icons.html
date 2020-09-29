@@ -1,47 +1,47 @@
 <nav class="nav sharing-icons">
   <span class="nav-item fa fa-share-square sharethis" title="Share this!"><i class="text">Share</i></span>
 
-  <a class="nav-item" href="https://twitter.com/intent/tweet?url={{ .Permalink }}&amp;text={{ .Title }}&nbsp;|&nbsp;{{ .Site.Title }}." title="Tweet this">
+  <a class="nav-item" href="https://twitter.com/intent/tweet?url={{ .Permalink }}&amp;text=Cool article &quot;{{ .Title }}&quot; from {{ .Site.Title }}!" title="Tweet this" target="_blank">
     <span class="fab fa-twitter"></span>
   </a>
   
-  <a class="nav-item" href="https://reddit.com/submit/?url={{ .Permalink }}" title="Share on Reddit">
+  <a class="nav-item" href="https://reddit.com/submit/?url={{ .Permalink }}" title="Share on Reddit" target="_blank">
     <span class="fab fa-reddit-alien" aria-hidden="true"></span>
   </a>
   
-  <a class="nav-item" href="http://tumblr.com/widgets/share/tool?canonicalUrl={{ .Permalink }}" title="Share on Tumblr">
+  <a class="nav-item" href="http://tumblr.com/widgets/share/tool?canonicalUrl={{ .Permalink }}" title="Share on Tumblr" target="_blank">
     <span class="fab fa-tumblr" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" title="Share on Facebook">
+  <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" title="Share on Facebook" target="_blank">
     <span class="fab fa-facebook-f" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" title="Share on Pintrest">
+  <a class="nav-item" href="https://pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" title="Share on Pintrest" target="_blank">
     <span class="fab fa-pinterest-p" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ .Permalink }}&amp;title={{ .Title }}&summary={{ .Summary }}" title="Share on LinkedIn">
+  <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ .Permalink }}&amp;title={{ .Title }}&summary={{ .Summary }}" title="Share on LinkedIn" target="_blank">
     <span class="fab fa-linkedin" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://www.xing.com/app/user?op=share;url={{ .Permalink }}" title="Share on Xing">
+  <a class="nav-item" href="https://www.xing.com/app/user?op=share;url={{ .Permalink }}" title="Share on Xing" target="_blank">
     <span class="fab fa-xing" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}" title="Share on Hackernews">
+  <a class="nav-item" href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}" title="Share on Hackernews" target="_blank">
     <span class="fab fa-hacker-news" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="https://telegram.me/share/url?text=Look at this cool article &quot;{{ .Title }}&quot; from {{ .Site.Title }}!&amp;url={{ .Permalink }}" title="Share via Telegram">
+  <a class="nav-item" href="https://telegram.me/share/url?text=Look at this cool article &quot;{{ .Title }}&quot; from {{ .Site.Title }}!&amp;url={{ .Permalink }}" title="Share via Telegram" target="_blank">
     <span class="fab fa-telegram-plane" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="whatsapp://send?text=Look at this cool article &quot;{{ .Title }}&quot; at {{ .Permalink }} !" title="Share via WhatsApp">
+  <a class="nav-item" href="whatsapp://send?text=Look at this cool article &quot;{{ .Title }}&quot; from {{ .Permalink }} !" title="Share via WhatsApp" target="_blank">
     <span class="fab fa-whatsapp" aria-hidden="true"></span>
   </a>
 
-  <a class="nav-item" href="mailto:?subject={{ .Title }} from {{ .Permalink }}&amp;body=Look at this cool article {{ .Permalink }} from {{ .Site.Title }}!" title="Share via Email">
+  <a class="nav-item" href="mailto:?subject={{ .Title }} from {{ .Permalink }}&amp;body=Look at this cool article &quot;{{ .Title }}&quot; from {{ .Permalink }}!" title="Share via Email" target="_blank">
     <span class="fas fa-envelope" aria-hidden="true"></span>
   </a>
 </nav>
