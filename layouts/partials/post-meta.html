@@ -25,7 +25,7 @@
       {{ if ne .Params.type "page" }}
         {{ if .Title }} <!-- Hide "posted on" when title is the date -->
           <span>Posted</span>
-          <time datetime="{{ .Date.Format "2001-01-01T00:00:00Z00:00" }}">
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
             {{ .Date.Format $dayFormat | humanize }}
             {{ .Date.Format $monthFormat }}
             {{ .Date.Format $yearFormat }}
@@ -46,17 +46,20 @@
 
     <!-- if lastmod differs to date then show Updated -->
     {{ if (and .Params.lastmod (or (ne .Params.lastmod .Date) (eq .Params.type "page"))) }}
-      <!-- Show separator on pages which don't have a publishdate -->
-      {{ if ne .Params.type "page" }}
-        &ndash;
-      {{ end }} <!-- /.type!=page -->
-      
-      <span>Updated</span>
-      <time datetime="{{ .Params.lastmod.Format "2001-01-01T00:00:00Z00:00" }}">
-        {{ .Params.lastmod.Format $dayFormat | humanize }}
-        {{ .Params.lastmod.Format $monthFormat }}
-        {{ .Params.lastmod.Format $yearFormat }}
-      </time>
+      <!-- if lastmod not same day as date -->
+      {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
+        <!-- Show separator on pages which don't have a publishdate -->
+        {{ if ne .Params.type "page" }}
+          &ndash;
+        {{ end }} <!-- /.type!=page -->
+        
+        <span>Updated</span>
+        <time datetime="{{ .Params.lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+          {{ .Params.lastmod.Format $dayFormat | humanize }}
+          {{ .Params.lastmod.Format $monthFormat }}
+          {{ .Params.lastmod.Format $yearFormat }}
+        </time>
+      {{ end }}
     {{ end }}
 
     <!-- if .Date or .Params.lastmod is over a year old -->
