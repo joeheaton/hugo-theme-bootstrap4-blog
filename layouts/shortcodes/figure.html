@@ -1,5 +1,5 @@
 <!-- Fork https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates/shortcodes -->
-<figure class="{{ with .Get "class" }}{{ . }}{{ end }}">
+<figure class="figure {{ with .Get "class" }}{{ . }}{{ end }}">
     <div class="image">
         {{- if .Get "link" -}}
         <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }} title="{{ with .Get "title" }}{{ . }} -> {{ end }}{{ with .Get "link" }}{{ . }}{{ end }}">
