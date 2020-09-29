@@ -24,7 +24,7 @@
 
 {{ with .Site.Params.library.fontawesome }}
 {{ "<!-- FontAwesome CDN -->" | safeHTML }}
-<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+<link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 {{ end }}
 
 {{ with .Site.Params.library.jquery_slim }}
@@ -39,12 +39,12 @@
 
 {{ with .Site.Params.library.jquery_slidereveal }}
 {{ "<!-- JQuery SlideReveal via CDN -->" | safeHTML }} <!-- https://github.com/nnattawat/slideReveal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slideReveal/1.1.2/jquery.slidereveal.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/slideReveal/1.1.2/jquery.slidereveal.min.js" crossorigin="anonymous"></script>
 {{ end }}
 
 {{ with .Site.Params.library.bootstrap_js }}
 {{ "<!-- Bootstrap JS via CDN -->" | safeHTML }}
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 {{ end }}
 
 {{ with .Site.Params.library.js_cookie }}
@@ -54,11 +54,11 @@
 
 {{ if .Site.Params.CookieConsent }}
 {{ "<!-- Cookie notification bar -->" | safeHTML }}
-<!--<script async src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>-->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"> <!-- local alternative static/cookieconsent.css? -->
+<link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"> <!-- local alternative static/cookieconsent.css? -->
 {{ end }}
 
 {{ if .Site.Params.library.mermaid }}
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js" integrity="sha512-ja+hSBi4JDtjSqc4LTBsSwuBT3tdZ3oKYKd07lTVYmCnTCor56AnRql00ssqnTOR9Ss4gOP/ROGB3SfcJnZkeg==" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js" integrity="sha512-ja+hSBi4JDtjSqc4LTBsSwuBT3tdZ3oKYKd07lTVYmCnTCor56AnRql00ssqnTOR9Ss4gOP/ROGB3SfcJnZkeg==" crossorigin="anonymous"></script>
 {{ end }}
