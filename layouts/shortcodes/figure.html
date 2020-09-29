@@ -15,8 +15,7 @@
                     {{- if or (.Get "alt") (.Get "caption") }}
                     alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
                     {{- end -}}
-                    {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-                    {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+                    style="{{ with .Get "width" }}max-width: {{ . }}; {{ end }}{{ with .Get "height" }}max-height: {{ . }};{{ end }}"
                 >
             </picture>
 
