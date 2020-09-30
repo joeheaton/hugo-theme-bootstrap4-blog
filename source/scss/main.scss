@@ -202,6 +202,7 @@ figure {
   }
 
   .blog-nav {
+    position: relative;
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
     color: #fff;
     border-radius: 0 0 $border-radius $border-radius;
