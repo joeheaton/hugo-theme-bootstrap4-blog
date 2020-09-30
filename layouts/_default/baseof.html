@@ -85,21 +85,46 @@
           {{ end }}
         {{ end }}
 
-        <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL }}" target="_self">
-            {{ i18n "home" }}
-          </a>
-          
-          {{- $currentPage := . -}}
-          {{ range .Site.Menus.navbar }}
-            {{ $menuURL := .URL }}
-
-            <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}" target="_self">
-              {{ .Name }}
+        <nav class="nav blog-nav d-flex justify-content-between">
+          <div class="d-flex flex-row">
+            <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL }}" target="_self">
+              {{ i18n "home" }}
             </a>
-          {{ end }}
+            
+            {{- $currentPage := . -}}
+            {{ range .Site.Menus.navbar }}
+              {{ $menuURL := .URL }}
+
+              <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}" target="_self">
+                {{ .Name }}
+              </a>
+            {{ end }}
+          </div>
+
+          <div class="d-flex flex-row-reverse">
+            <form id="sitesearch" class="search" role="search">
+              <label for="search-input">
+                <i class="fa fa-search "></i>
+              </label>
+
+              <input type="search" id="sitesearch-input" class="search-input">
+            </form>
+          </div>
+
+          <div id="search-results" class="container">
+          </div>
         </nav>
       </div>
+
+      <template id="search-result" hidden>
+        <article class="search-result">
+          <h4 class="search-result-title">
+            <a class="search-result-link"></a>
+          </h4>
+
+          <p class="search-result-summary"></p>
+        </article>
+      </template>
       {{ end }}
 
 

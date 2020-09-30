@@ -217,6 +217,65 @@ figure {
         color: #fff;
       }
     }
+
+    /* Site Search */
+    .search {
+      position: relative;
+      height: 84%;
+      margin: 1%;
+      border: 1px solid #fff;
+      border-radius: $border-radius;
+
+      label {
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        margin: 0;
+      }
+
+      input {
+        height: 100%;
+        padding: 0 0 0 30px;
+        background: transparent;
+        border: none;
+      }
+    }
+
+    #search-results {
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      width: 60%;
+      z-index: 1;
+      background: #fff;
+      color: #000;
+      border-radius: $border-radius;
+      box-shadow: 0 0 12px $shadow;
+
+      .close {
+        position: absolute;
+        right: 1rem;
+        top: 0;
+        font-size: 2rem;
+      }
+
+      .search-title {
+        margin: 1rem 0;
+      }
+
+      article.search-result {
+        padding: 0 0.4rem;
+
+        .search-result-title {
+
+        }
+
+        .search-result-summary {
+          margin: 0.6rem 0 1rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }
 
