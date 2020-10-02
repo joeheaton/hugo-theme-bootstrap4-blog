@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{ range .Paginator.Pages }}
-    {{ if .Site.Params.truncate }}
+  {{ if .Site.Params.truncate }}
     {{ .Render "summary" }}
   {{ else }}
     {{ .Render "content" }}
