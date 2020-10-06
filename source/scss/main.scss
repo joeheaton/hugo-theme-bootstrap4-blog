@@ -477,6 +477,12 @@ p > code {
   padding: 0 0.2rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: $site-bg-dark;
+  }
+}
+
 
 // Sharing Icons
 .sharing-icons {
