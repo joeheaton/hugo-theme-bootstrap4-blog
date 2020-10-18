@@ -12,12 +12,15 @@
 
     {{ partial "schema-dot-org.html" . }}
 
+    {{ "<!-- Custom JS -->" | safeHTML }}
     {{ partial "head-custom.html" . }}
   </head>
 
   <body>
+    {{ "<!-- a11y: skip to content -->" | safeHTML }}
     <a href="#main" target="_self" class="skip-to-main">Skip to content.</a>
 
+    {{ "<!-- site masthead -->" | safeHTML }}
     <div class="masthead-super container d-flex flex-row justify-content-between">
       <div>
         {{ .Site.Params.tagline }}
@@ -32,7 +35,7 @@
       </div>
     </div>
 
-    {{ "<!-- Site container -->" | safeHTML }}
+    {{ "<!-- site container -->" | safeHTML }}
     <div id="tallest" class="container">
 
       {{ block "masthead" . }}
@@ -85,6 +88,7 @@
           {{ end }}
         {{ end }}
 
+        {{ "<!-- site nav -->" | safeHTML }}
         <nav class="nav blog-nav d-flex justify-content-between">
           <div class="d-flex flex-row">
             <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL }}" target="_self">
@@ -102,6 +106,7 @@
           </div>
 
           <div class="d-flex flex-row-reverse">
+            {{ "<!-- site search -->" | safeHTML }}
             <form id="sitesearch" class="search" role="search">
               <label for="search-input">
                 <i class="fa fa-search "></i>
@@ -129,6 +134,7 @@
 
 
       {{ block "body" . }}
+      {{ "<!-- main content -->" | safeHTML }}
       <main id="main" class="container">
         <div class="row">
           <div class="col-sm-8 container-fluid main">
@@ -141,9 +147,10 @@
 
           {{ partial "sidebar.html" . }}
 
-        </div> {{ "<!-- /.row -->" | safeHTML }}
+        </div>
 
-      </main> {{ "<!-- /.container -->" | safeHTML }}
+      </main>
+      {{- "<!-- /#main.container -->" | safeHTML }}
       {{ end }}
 
       {{ partial "footer.html" . }}

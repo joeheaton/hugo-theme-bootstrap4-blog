@@ -21,47 +21,49 @@
 {{ "<!-- Bootstrap CDN -->" | safeHTML }}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-{{ with .Site.Params.library.fontawesome }}
+{{ with .Site.Params.library.fontawesome -}}
 {{ "<!-- FontAwesome CDN -->" | safeHTML }}
 <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-{{ end }}
+{{ end -}}
 
-{{ with .Site.Params.library.jquery_slim }}
+{{- with .Site.Params.library.jquery_slim }}
 {{ "<!-- JQuery Slim via CDN -->" | safeHTML }}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
 
-{{ with .Site.Params.library.jquery }}
+{{- with .Site.Params.library.jquery }}
 <!--{{ "<!-- JQuery via CDN -->" | safeHTML }}-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
 
-{{ with .Site.Params.library.jquery_slidereveal }}
+{{- with .Site.Params.library.jquery_slidereveal }}
 {{ "<!-- JQuery SlideReveal via CDN -->" | safeHTML }} <!-- https://github.com/nnattawat/slideReveal -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/slideReveal/1.1.2/jquery.slidereveal.min.js" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
 
-{{ with .Site.Params.library.bootstrap_js }}
+{{- with .Site.Params.library.bootstrap_js }}
 {{ "<!-- Bootstrap JS via CDN -->" | safeHTML }}
 <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
 
-{{ with .Site.Params.library.js_cookie }}
+{{- with .Site.Params.library.js_cookie }}
 {{ "<!-- JS-Cookie -->" | safeHTML }} <!-- https://github.com/js-cookie/js-cookie -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-{{ end }}
+{{ end -}}
 
-{{ if .Site.Params.CookieConsent }}
+{{- if .Site.Params.CookieConsent }}
 {{ "<!-- Cookie notification bar -->" | safeHTML }}
-<!--<script src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>-->
-
 <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"> <!-- local alternative static/cookieconsent.css? -->
-{{ end }}
 
-{{ if .Site.Params.library.mermaid }}
+<!--<script src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=altblack&amp;thirdparty=1&amp;always=1&amp;noGeoIp=1&amp;showNoConsent=1&amp;showPolicyLink=1&amp;privacyPage={{ .Site.BaseURL | absURL }}{{ .Site.Params.privacyPolicy }}"></script>-->
+{{ end -}}
+
+{{- if .Site.Params.library.mermaid }}
+{{ "<!-- Mermaid graphviz -->" | safeHTML }}
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js" integrity="sha512-ja+hSBi4JDtjSqc4LTBsSwuBT3tdZ3oKYKd07lTVYmCnTCor56AnRql00ssqnTOR9Ss4gOP/ROGB3SfcJnZkeg==" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
 
-{{ if .Site.Params.library.lunr }}
+{{- if .Site.Params.library.lunr }}
+{{ "<!-- Lunr static site search -->" | safeHTML }}
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous"></script>
-{{ end }}
+{{ end -}}
