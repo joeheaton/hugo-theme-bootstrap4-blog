@@ -3,15 +3,13 @@
   {
     "@context": "http://schema.org/",
     "@type": "{{ if eq .Type "page" }}Blog{{ else if eq .Type "posts" }}BlogPosting{{ else }}Page{{ end }}",
-    "headline": "{{ substr .Title 0 110 }}",
     "url": {{ printf "%s" .Permalink }},
-    {{ if eq .Type "posts" }}"wordCount": "{{ .WordCount }}",{{ end }}
+    "headline": "{{ substr .Title 0 110 }}",
+    {{- if eq .Type "posts" }}"wordCount": "{{ .WordCount }}",{{ end }}
     "author": {
       "@type": "Person",
       "name": "{{ .Params.author | default .Site.Params.author }}"
     },
-    "keywords": "{{ delimit (union .Site.Params.keywords (union .Params.categories .Params.tags)) ", " }}",
-    "description": "{{ .Params.description | default .Site.Params.description }}",
     
     {{- if not .PublishDate.IsZero }}
     "datePublished": {{ .PublishDate }},
@@ -20,9 +18,9 @@
     {{- end }}
 
     {{- if not .Lastmod.IsZero }}
-    "dateModified": {{ .Lastmod }}
+    "dateModified": {{ .Lastmod }},
     {{ else if not .Date.IsZero }}
-    "dateModified": {{ .Date }}
+    "dateModified": {{ .Date }},
     {{- end }}
 
     {{- with .Params.images -}}
@@ -42,5 +40,8 @@
         }
       {{- end -}}
     {{ end -}}
+
+    "keywords": "{{ delimit (union .Site.Params.keywords (union .Params.categories .Params.tags)) ", " }}",
+    "description": "{{ .Params.description | default .Site.Params.description }}"
   }
 </script>
