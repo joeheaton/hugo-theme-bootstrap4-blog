@@ -3,6 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {{ .Site.Hugo.Generator }}
 
+{{ "<!-- SEO -->" | safeHTML }}
+<meta name="description" content="{{ .Site.Params.description }}">
+<meta name="keywords" content="{{ range .Site.Params.keywords }}{{ . }}, {{ end }}">
+
 {{ "<!-- OpenGraph -->" | safeHTML }}
 {{ template "_internal/opengraph.html" . }}
 
