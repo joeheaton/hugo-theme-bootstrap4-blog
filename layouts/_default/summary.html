@@ -4,11 +4,11 @@
   </header>
 
   <section class="content">
-    <picture>
+    <picture class="thumbnail">
       {{ with .Resources.ByType "image" }}
         {{ range . }}
           {{ if findRE `images/default\.(jpe?g|png|webp|avif)$` .RelPermalink }}
-            <img src="{{ .RelPermalink }}" alt="thumbnail" class="thumbnail">
+            <img src="{{ .RelPermalink }}" alt="thumbnail">
             {{ $thumbnail := true }}
           {{ end }}
         {{ end }}
