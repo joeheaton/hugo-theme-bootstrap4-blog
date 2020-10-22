@@ -468,7 +468,9 @@ figure {
   }
 }
 
-// Page elements
+/*
+ * Page elements
+ */
 .highlight {
   margin: 0 0 1rem;
 
@@ -538,6 +540,7 @@ p > code {
 .fa-kofi { color: #29ABE0; }
 .fa-github { color: #000; }
 .fa-envelope { color: #777; }
+.fa-rss { color: #F69537; }
 
 .fa-exclamation-triangle { color: gold; }
 
@@ -565,6 +568,14 @@ p > code {
   @media (prefers-color-scheme: dark) {
     background: $content-bg-dark;
     border-color: $shadow;
+  }
+
+  ul {
+    list-style-type: none;
+
+    .fa-tag {
+      vertical-align: bottom;
+    }
   }
 }
 
@@ -642,8 +653,17 @@ p > code {
  * Specifics
  */
 
- #disqus_thread {
+#disqus_thread {
   margin-top: 1rem;
+}
+
+.mermaid {
+  margin: 0 0 1rem;
+}
+
+.asciinema-player {
+  margin: 0 0 1rem;
+  box-shadow: 0 0 3px 1px $shadow-light;
 }
 
 .twitter-timeline {
