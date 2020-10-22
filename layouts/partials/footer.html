@@ -21,6 +21,26 @@
         </div>
 
         <div class="col">
+            <h3>RSS Feeds <i class="fas fa-rss" title="RSS"></i></h3>
+
+            <ul class="list-group">
+                <li>
+                    <a href="/index.xml" rel="alternative" type="application/rss+xml">
+                        Everything
+                    </a>
+                </li>
+
+                {{ if .Params.tags }}
+                {{ range .Params.tags }}
+                <li>
+                    <a href="/tags/{{ . }}/index.xml" rel="alternative" type="application/rss+xml">
+                        {{ . }}
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {{ end }}
+                {{ end }}
+            </ul>
         </div>
     </div>
 
