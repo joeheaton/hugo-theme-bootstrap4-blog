@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="{{ .Lang }}" prefix="dc: http://purl.org/dc/elements/1.1/ og: http://ogp.me/ns#" {{ if or (eq .Lang "ar") (eq .Lang "fa") }}dir="rtl"{{ end }}>
   <head>
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-
     {{- partial "head-meta.html" . }}
 
     {{- partial "head-links.html" . }}
