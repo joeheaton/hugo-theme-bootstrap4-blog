@@ -5,17 +5,24 @@
 
   <section class="content">
     <picture class="thumbnail">
+      {{ $summaryScratch := newScratch }}
       {{ with .Resources.ByType "image" }}
         {{ range . }}
           {{ if findRE `images/default\.(jpe?g|png|webp|avif)$` .RelPermalink }}
             <img src="{{ .RelPermalink }}" alt="thumbnail">
-            {{ $thumbnail := true }}
+            {{ $summaryScratch.Set "thumbnail" "true" }}
           {{ end }}
         {{ end }}
       {{ end }}
-  </picture>
 
-    {{ .Summary }}
+      {{ if and (ne ($summaryScratch.Get "thumbnail") "true") (.Params.tags) (fileExists "`.Site.BaseURL`/images/thumbnail/`index .Params.tags 0 `.webp") }}
+        <img src="{{ .Site.BaseURL }}/images/thumbnail/{{ index .Params.tags 0 }}.webp" alt="thumbnail">
+      {{ end }}
+    </picture>
+
+    <span>
+      {{ .Summary }}
+    </span>
 
     <a href='{{ .Permalink }}'  target="_self">
       {{ i18n "readMore" }}
