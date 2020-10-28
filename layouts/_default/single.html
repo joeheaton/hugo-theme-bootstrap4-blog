@@ -27,12 +27,12 @@
   {{ end }}
 
   <footer class="footer">
+    {{ partial "vcard.html" . }}
+    
     {{ if (ne ($.Param "sharingicons") false) }}
       {{ partial "sharing-icons.html" . }}
     {{ end }}
 
-    {{ partial "vcard.html" . }}
-    
     {{ if and (.Site.DisqusShortname) (ne .Site.Params.comments false) }}
       {{ template "_internal/disqus.html" . }}
     {{ end }}
