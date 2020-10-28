@@ -2,6 +2,7 @@
 
   {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
 
+  <!-- all posts -->
   {{ range $paginator.Pages }}
     {{ if .Site.Params.truncate }}
       {{ .Render "summary" }}
@@ -10,10 +11,12 @@
     {{ end }}
   {{ end }}
 
+  <!-- pagination buttons -->
   {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
     {{ partial "pagination.html" . }}
   {{ end }}
 
+  <!-- vcard -->
   {{ if .Site.Params.me }}
     {{ partial "vcard.html" . }}
   {{ end }}
