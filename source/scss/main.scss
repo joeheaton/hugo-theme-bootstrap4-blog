@@ -467,6 +467,14 @@ figure {
     height: auto;
     margin: 13px auto;
   }
+
+  .vcard:before {
+    content: "▲";
+    position: absolute;
+    top: -0.9rem;
+    color: #007bff;
+    left: 2px;
+  }
 }
 
 /*
@@ -540,10 +548,12 @@ p > code {
 .fa-patreon { color: rgb(232, 91, 70); }
 .fa-kofi { color: #29ABE0; }
 .fa-github { color: #000; }
+.fa-gitlab { color: #fc6d26; }
 .fa-envelope { color: #777; }
 .fa-rss { color: #F69537; }
 
 .fa-exclamation-triangle { color: gold; }
+.fa-splotch { color: #519cff; }
 
 /*
  * Footer
@@ -627,14 +637,6 @@ p > code {
 
 .vcard {
   box-shadow: 0 3px 3px -3px $shadow;
-
-  &::before {
-    content: "▲";
-    position: absolute;
-    top: -0.9rem;
-    color: #007bff;
-    left: 2px;
-  }
 
   p {
     margin: 0;
