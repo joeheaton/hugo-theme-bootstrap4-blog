@@ -1,12 +1,12 @@
 {{ block "footer" . }}
 {{ "<!-- site footer -->" | safeHTML }}
 <footer id="footer" class="container">
-    <div class="row">
+    <!--<div class="row">
         <div class="col">
         </div>
 
         <div class="col-6">
-            <h3>Mailing list</h3>
+            <!--<h3>Mailing list</h3>
             <small class="form-text text-muted"><del>Weekly updates</del>, powered by TinyLetter &amp; MailChimp.</small>
 
             <form class="form-inline justify-content-center" action="https://tinyletter.com/heaton" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/heaton', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
@@ -17,35 +17,20 @@
                     <input type="hidden" value="1" name="embed">
                     <input type="submit" value="Subscribe" class="btn btn-primary" >
                 </div>
-            </form>
+            </form>->
         </div>
 
         <div class="col">
-            <h3>RSS Feeds <i class="fas fa-rss" title="RSS"></i></h3>
-
-            <ul class="list-group">
-                <li>
-                    <a href="/index.xml" rel="alternative" type="application/rss+xml">
-                        Everything
-                    </a>
-                </li>
-
-                {{ if .Params.tags }}
-                {{ range .Params.tags }}
-                <li>
-                    <a href="/tags/{{ . }}/index.xml" rel="alternative" type="application/rss+xml">
-                        {{ . }}
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </a>
-                </li>
-                {{ end }}
-                {{ end }}
-            </ul>
+            
         </div>
-    </div>
+    </div>-->
 
     <div class="row">
         <div class="col">
+            
+        </div>
+
+        <div class="col-8">
             <div class="bigbtns">
                 <div id="bigbtns_firefoxbtn">
                     <a href="https://getfirefox.com/" title="A better browser for a better Internet" target="_blank">
@@ -381,6 +366,29 @@
                 
                 <a href="{{ .Site.BaseURL }}/privacy" target="_self">Privacy policy <i class="fas fa-user-shield"></i></a>
             </p>
+        </div>
+
+        <div class="col">
+            <h3>RSS Feeds <i class="fas fa-rss" title="RSS"></i></h3>
+
+            <ul class="list-group">
+                <li>
+                    <a href="/index.xml" rel="alternative" type="application/rss+xml">
+                        Everything
+                    </a>
+                </li>
+
+                {{ if .Params.tags }}
+                {{ range .Params.tags }}
+                <li>
+                    <a href="/tags/{{ . }}/index.xml" rel="alternative" type="application/rss+xml">
+                        {{ . }}
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {{ end }}
+                {{ end }}
+            </ul>
         </div>
     </div>
 </footer>
