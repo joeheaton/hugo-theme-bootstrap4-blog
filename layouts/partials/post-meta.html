@@ -13,66 +13,74 @@
   </a>
 </h2>
 
-<p class="metadata">
-    <!-- show metadata on posts -->
-    {{ if not .Date.IsZero }}
-      {{ if .Params.draft }}
-        <span title="Draft / Under construction">
-          {{ safeHTML "&#128679;" }}
-        </span>
-      {{ end }}
+<div class="row">
+  <div class="col-8 metadata">
+      <!-- show metadata on posts -->
+      {{ if not .Date.IsZero }}
+        {{ if .Params.draft }}
+          <span title="Draft / Under construction">
+            {{ safeHTML "&#128679;" }}
+          </span>
+        {{ end }}
 
-      {{ if ne .Params.type "page" }}
-        {{ if .Title }} <!-- Hide "posted on" when title is the date -->
-          <span>Posted</span>
-          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-            {{ .Date.Format $dayFormat | humanize }}
-            {{ .Date.Format $monthFormat }}
-            {{ .Date.Format $yearFormat }}
-          </time>
-        {{ end }} <!-- /if not .Title -->
-      {{ end }} <!-- /if not .Date.IsZero -->
-      
-      {{ if .Site.Params.showAuthor }}
-        {{ i18n "authoredBy" }}
-        {{ .Params.author | default .Site.Params.author }}
-      {{ end }}
-
-      {{ if or (.Params.categories) (.Params.tags) }}
-        {{ i18n "postedIn" }}
-        {{ partial "meta-terms.html" . }}
-      {{ end }}
-    {{ end }} <!-- /.type!=page -->
-
-    <!-- if lastmod differs to date then show Updated -->
-    {{ if (and .Params.lastmod (or (ne .Params.lastmod .Date) (eq .Params.type "page"))) }}
-      <!-- if lastmod not same day as date -->
-      {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
-        <!-- Show separator on pages which don't have a publishdate -->
         {{ if ne .Params.type "page" }}
-          &ndash;
-        {{ end }} <!-- /.type!=page -->
+          {{ if .Title }} <!-- Hide "posted on" when title is the date -->
+            <span>Posted</span>
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ .Date.Format $dayFormat | humanize }}
+              {{ .Date.Format $monthFormat }}
+              {{ .Date.Format $yearFormat }}
+            </time>
+          {{ end }} <!-- /if not .Title -->
+        {{ end }} <!-- /if not .Date.IsZero -->
         
-        <span>Updated</span>
-        <time datetime="{{ .Params.lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
-          {{ .Params.lastmod.Format $dayFormat | humanize }}
-          {{ .Params.lastmod.Format $monthFormat }}
-          {{ .Params.lastmod.Format $yearFormat }}
-        </time>
-      {{ end }}
-    {{ end }}
+        {{ if .Site.Params.showAuthor }}
+          {{ i18n "authoredBy" }}
+          {{ .Params.author | default .Site.Params.author }}
+        {{ end }}
 
-    <!-- if .Date or .Params.lastmod is over a year old -->
-    {{ $pageAge := .Date }}
-    {{ if .Params.lastmod }}
-      {{ $pageAge := . }}
-    {{ end }}
+        {{ if or (.Params.categories) (.Params.tags) }}
+          {{ i18n "postedIn" }}
+          {{ partial "meta-terms.html" . }}
+        {{ end }}
+      {{ end }} <!-- /.type!=page -->
 
-    <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
-    {{ $ageMonths := div (sub now.Unix $pageAge.Unix) 2592000 }}
-    {{ if (eq .Type "posts") }}
-      {{ if gt $ageMonths 11 }}
-        <i class="fas fa-exclamation-triangle {{ if gt $ageMonths 23 }}text-orange{{ else }}text-info{{ end }}" title="Keep in mind this article is over a year old!"></i>
+      <!-- if lastmod differs to date then show Updated -->
+      {{ if (and .Params.lastmod (or (ne .Params.lastmod .Date) (eq .Params.type "page"))) }}
+        <!-- if lastmod not same day as date -->
+        {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
+          <!-- Show separator on pages which don't have a publishdate -->
+          {{ if ne .Params.type "page" }}
+            &ndash;
+          {{ end }} <!-- /.type!=page -->
+          
+          <span>Updated</span>
+          <time datetime="{{ .Params.lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Params.lastmod.Format $dayFormat | humanize }}
+            {{ .Params.lastmod.Format $monthFormat }}
+            {{ .Params.lastmod.Format $yearFormat }}
+          </time>
+        {{ end }}
       {{ end }}
-    {{ end }} <!-- /.type!=page -->
-</p>
+
+      <!-- if .Date or .Params.lastmod is over a year old -->
+      {{ $pageAge := .Date }}
+      {{ if .Params.lastmod }}
+        {{ $pageAge := . }}
+      {{ end }}
+
+      <!-- Thanks https://kodify.net/hugo/date-time/relative-age-hugo/ -->
+      {{ $ageMonths := div (sub now.Unix $pageAge.Unix) 2592000 }}
+      {{ if (eq .Type "posts") }}
+        {{ if gt $ageMonths 11 }}
+          <i class="fas fa-exclamation-triangle {{ if gt $ageMonths 23 }}text-orange{{ else }}text-info{{ end }}" title="Keep in mind this article is over a year old!"></i>
+        {{ end }}
+      {{ end }} <!-- /.type!=page -->
+  </div>
+
+  <div class="col text-right">
+    {{ if (eq .Params.sticky true) }}
+      <i class="fas fa-splotch" title="Sticky post!"></i>
+    {{ end }}
+  </div>
+</div>
