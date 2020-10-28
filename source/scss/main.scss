@@ -385,6 +385,7 @@ figure {
 
   .content {
     margin: 1rem 0;
+    //box-shadow: 0 5px 6px -6px #333;  // shadowy underline
 
     .thumbnail {
       float: right;
@@ -431,10 +432,6 @@ figure {
           }
         }
       }
-    }
-
-    .content {
-      box-shadow: 0 5px 6px -6px #333;  // shadowy underline
     }
 
     .footer {
@@ -629,6 +626,16 @@ p > code {
 }
 
 .vcard {
+  box-shadow: 0 3px 3px -3px $shadow;
+
+  &::before {
+    content: "▲";
+    position: absolute;
+    top: -0.9rem;
+    color: #007bff;
+    left: 2px;
+  }
+
   p {
     margin: 0;
   }
@@ -663,10 +670,16 @@ p > code {
 
 .mermaid {
   margin: 0 0 1rem;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .asciinema-player {
   margin: 0 0 1rem;
+  border-radius: $border-radius;
   box-shadow: 0 0 3px 1px $shadow-light;
 }
 
