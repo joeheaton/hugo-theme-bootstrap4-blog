@@ -46,33 +46,7 @@
             {{ end }}
 
             <nav class="nav sharing-icons justify-content-end ml-auto">
-              <a class="nav-item" title="Discord: Deso#9121">
-                <span class="fab fa-discord" aria-hidden="true"></span>
-              </a>
-
-              <a class="nav-item" href="https://twitter.com/{{ .Site.Params.social.twitter }}" title="Twitter">
-                <span class="fab fa-twitter"></span>
-              </a>
-
-              <a class="nav-item" href="https://www.flickr.com/photos/{{ .Site.Params.social.flickr }}" title="Flickr">
-                <span class="fab fa-flickr" aria-hidden="true"></span>
-              </a>
-
-              <a class="nav-item" href="https://www.linkedin.com/in/{{ .Site.Params.social.linkedin }}" title="LinkedIn">
-                <span class="fab fa-linkedin" aria-hidden="true"></span>
-              </a>
-
-              <a class="nav-item" href="https://www.github.com/{{ .Site.Params.social.github }}" title="Github">
-                <span class="fab fa-github" aria-hidden="true"></span>
-              </a>
-
-              <a class="nav-item" href="https://www.patreon.com/{{ .Site.Params.social.patreon }}" title="Patreon">
-                <span class="fab fa-patreon" aria-hidden="true"></span>
-              </a>
-
-              <a class="nav-item" href="https://ko-fi.com//{{ .Site.Params.social.kofi }}" title="Ko-fi">
-                <span class="fas fa-coffee fa-kofi" aria-hidden="true"></span>
-              </a>
+              {{ partial "social-icons.html" . }}
 
               <a class="nav-item" id="settings-toggle" target="_self" href="javascript: void(0)">
                 <span class="fas fa-cog"></span>
@@ -86,14 +60,8 @@
         {{ "<!-- site nav -->" | safeHTML }}
         <nav class="nav blog-nav d-flex justify-content-between">
           <div class="d-flex flex-row">
-            <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL }}" target="_self">
-              {{ i18n "home" }}
-            </a>
-            
             {{- $currentPage := . -}}
             {{ range .Site.Menus.navbar }}
-              {{ $menuURL := .URL }}
-
               <a class="nav-link{{ if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}" target="_self">
                 {{ .Name }}
               </a>
@@ -170,7 +138,7 @@
     </div>
 
     {{ partial "settings.html" }}
-    {{ partial "cookie-consent.html" }}
+    {{ partial "cookie-consent.html" . }}
 
     <!--{{ partial "scripts.html" . }}-->
   </body>
