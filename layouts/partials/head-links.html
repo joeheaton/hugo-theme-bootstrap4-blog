@@ -11,20 +11,20 @@
 
 {{ "<!-- Preload -->" | safeHTML }}
 <link href="{{ "css/style.css" | absURL }}" rel="preload" as="style">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" as="style">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="preload" as="style">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-regular-400.woff2" rel="preload" as="font">
 
 {{ "<!-- Web App Manifest -->" | safeHTML }}
 <link rel="manifest" href="{{ .Site.BaseURL }}/manifest.json">
 
 {{ "<!-- Bootstrap CDN -->" | safeHTML }}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="preload" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" rel="preload" as="style">
 
 {{ "<!-- Primary CSS -->" | safeHTML }}
 <link href="{{ "css/style.css" | absURL }}" rel="stylesheet" {{ if not .Site.Params.disable_sri }} integrity="{{ .Site.Data.sri.style }}" crossorigin="anonymous"{{ end }}>
 
 {{ with .Site.Params.library.fontawesome -}}
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/webfonts/fa-regular-400.woff2" type="font/woff2" rel="preload" as="font">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/webfonts/fa-brands-400.woff2" type="font/woff2" rel="preload" as="font">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/webfonts/fa-solid-900.woff2" type="font/woff2" rel="preload" as="font">-->
 {{ "<!-- FontAwesome CDN -->" | safeHTML }}
 <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 {{ end -}}
@@ -76,3 +76,8 @@
 {{ "<!-- Lunr static site search -->" | safeHTML }}
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous"></script>
 {{ end -}}
+
+{{- if .Site.Params.library.cloudflare_analytics }}
+{{ "<!-- Cloudflare Web Analytics -->" | safeHTML }}
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ .Site.Params.library.cloudflare_analytics }}"}'></script>
+{{ end }}
