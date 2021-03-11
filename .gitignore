@@ -2,7 +2,7 @@ node_modules
 exampleSite/themes
 yarn.lock
 data/sri.toml
-static/css
+# static/css
 .sass-cache
 data/sri.toml
 static/css/style.css
