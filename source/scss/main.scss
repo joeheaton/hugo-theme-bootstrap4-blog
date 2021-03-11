@@ -694,6 +694,13 @@ p > code {
   margin: 0 auto 1rem !important;
 }
 
+.youtube-player,
+.map-embed,
+.mastodon-embed {
+  border-radius: $border-radius;
+  box-shadow: 0 0 3px 1px $shadow-light;
+}
+
 .youtube-player {
   display: block;
   width: 640px;
@@ -706,8 +713,18 @@ p > code {
   width: 100%;
   min-height: 18rem;
   border: 0;
-  border-radius: $border-radius;
-  box-shadow: 0 0 3px 1px $shadow-light;
+}
+
+.mastodon-container {
+  width: 550px;
+  margin: 0 auto;
+
+  .mastodon-embed {
+    width: 550px;
+    height: 550px;
+    margin: 0 auto;
+    border-radius: $border-radius;
+  }
 }
 
 .footnote-backref {
