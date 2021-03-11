@@ -6,6 +6,12 @@
 </a>
 {{ end }}
 
+{{ if .mastodon }}
+<a class="nav-item" href="https://{{ index .mastodon 1 }}/@{{ index .mastodon 0 }}" title="mastodon" rel="me">
+  <span class="fab fa-mastodon"></span>
+</a>
+{{ end }}
+
 {{ if .twitter }}
 <a class="nav-item" href="https://twitter.com/{{ .twitter }}" title="Twitter">
   <span class="fab fa-twitter"></span>
