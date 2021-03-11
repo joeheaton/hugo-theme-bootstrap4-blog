@@ -102,23 +102,7 @@
         <div class="row">
           <div class="col-sm-8 container-fluid main">
 
-            {{ if .Site.Params.debug }}
-            <article class="blog-post text-monospace debug">
-              <h2>🚧 DEBUG MODE 🚧</h2>
-              <h3>.Site</h3>
-              <p>{{ printf "%#v" $.Site }}</p>
-        
-              <h3>Page Context</h3>
-              <p>{{ printf "%#v" . }}</p>
-
-              <h3>Pages</h3>
-              <p>
-                {{- range .Pages -}}
-                  {{ printf "%#v" . }}
-                {{- end -}}
-              </p>
-            </article>
-            {{ end }}
+            {{ partial "debug.html" }}
 
             {{ block "main" . }}
             <!-- The part of the page that begins to differ between templates -->
