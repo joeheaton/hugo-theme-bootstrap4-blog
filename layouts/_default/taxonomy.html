@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+  <!-- sticky posts -->
+  {{ range .Paginator.Pages }}
+    {{ if (eq .Params.sticky true) }}
+      {{ if .Site.Params.truncate }}
+        {{ .Render "summary" }}
+      {{ else }}
+        {{ .Render "content" }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  <!-- non-sticky posts -->
+  {{ range .Paginator.Pages }}
+    {{ if (ne .Params.sticky true) }}
+      {{ if .Site.Params.truncate }}
+        {{ .Render "summary" }}
+      {{ else }}
+        {{ .Render "content" }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  <!-- pagination buttons -->
+  {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+    {{ partial "pagination.html" . }}
+  {{ end }}
+
+  <!-- vcard -->
+  {{ if .Site.Params.me }}
+    {{ partial "vcard.html" . }}
+  {{ end }}
+
+{{ end }} 
