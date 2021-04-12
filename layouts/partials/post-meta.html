@@ -13,6 +13,7 @@
   </a>
 </h2>
 
+{{ if .Site.Params.post_excerpts }}
 <div class="row">
   <div class="col-8 metadata">
       <!-- show metadata on posts -->
@@ -84,3 +85,4 @@
     {{ end }}
   </div>
 </div>
+{{ end }}
