@@ -15,6 +15,7 @@
     {{ "<!-- a11y: skip to content -->" | safeHTML }}
     <a href="#main" target="_self" class="skip-to-main">Skip to content.</a>
 
+    {{ if .Site.Params.masthead_visible }}
     {{ "<!-- site masthead -->" | safeHTML }}
     <div class="masthead-super container d-flex flex-row justify-content-between">
       <div>
@@ -29,6 +30,7 @@
         Online since 2011
       </div>
     </div>
+    {{ end }}
 
     {{ "<!-- site container -->" | safeHTML }}
     <div id="tallest" class="container">
