@@ -19,7 +19,7 @@
     {{- $sizeStep := ( $.Scratch.Get "sizeStep" ) -}}
     <!--div>Font step: {{ $sizeStep }}</div>-->
 
-    <p class="tag-cloud">
+    <div class="tag-cloud">
         {{- range $name, $taxonomy := $.Site.Taxonomies.tags -}} 
             {{- $currentTagCount := len $taxonomy.Pages -}}
             {{ $weigth := div (sub (math.Log $currentTagCount) (math.Log $minCount)) (sub (math.Log $maxCount) (math.Log $minCount)) }}
@@ -28,5 +28,5 @@
               {{- $name -}}
             </a>
         {{- end -}}
-    </p>
+        </div>
 {{- end -}}
