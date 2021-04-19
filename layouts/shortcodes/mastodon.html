@@ -1,0 +1,6 @@
+{{ if .Site.Params.social.mastodon }}
+<div class="embed mastodon-container">
+    <iframe src="https://{{ index .Params 0 }}/@{{ index .Params 1 }}/{{ index .Params 2 }}/embed" class="mastodon-embed" allowfullscreen="allowfullscreen"></iframe>
+    <script src="https://{{ index .Site.Params.social.mastodon 1 }}/embed.js" async="async"></script>
+</div>
+{{ end }}
