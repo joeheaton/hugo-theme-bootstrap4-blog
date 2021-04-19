@@ -2,15 +2,15 @@
  * Vars
  */
 
-$site-bg: #606578;
+$site-bg: rgb(243, 243, 243);  //Grey:606578
 $site-bg-dark: #24262d;
 $text-primary: #2d2b38;
 $text-primary-dark: #d8d8d8;
 $scheme: #2965B4;
-$shadow: #333;
-$content-bg: #fff;
+$content-bg: rgb(255, 255, 255);
 $content-bg-dark: #2f2f2f;
-$shadow-light: #0003;
+$shadow: #333;
+$shadow-light: rgb(180, 180, 180);
 $border-radius: 8px;
 $screen-small: 30em;
 
@@ -26,7 +26,6 @@ html {
 }
 
 body {
-  padding: 0 0.5rem;
   color: #333;
   background: $site-bg; // url("https://live.staticflickr.com/65535/50380808312_a3aeb336b2_k.jpg") center center fixed;
   scrollbar-width: thin;
@@ -99,7 +98,7 @@ figure {
   text-align: center;
   background: $text-primary;
   border-radius: $border-radius;
-  box-shadow: 1px 1px 3px $shadow;
+  box-shadow: 1px 1px 3px $shadow-light;
 
   a:hover {
     text-decoration: none;
@@ -134,17 +133,10 @@ figure {
   }
 }
 
-#tallest.container {
-  padding: 0;
-}
-
 #tallest {
+  padding: 0;
   border-radius: $border-radius;
   //box-shadow: 0 0 3px 1px #333;
-}
-
-.container {
-  max-width: 60rem;
 }
 
 .masthead-super {
@@ -152,8 +144,13 @@ figure {
   padding: 0 0.5rem;
   font-size: 0.6rem;
   font-family: Hack, monospace, 'Courier New', Courier;
-  color: #fff;
-  text-shadow: #333 1px 1px 4px;
+  color: $text-primary;
+  text-shadow: $shadow-light 1px 1px 4px;
+
+  @media (prefers-color-scheme: dark) {
+    color: $text-primary-dark;
+    text-shadow: $shadow-light 1px 1px 4px;
+  }
 
   * {
     cursor: default;
@@ -161,16 +158,16 @@ figure {
 }
 
 .masthead {
-  box-shadow: 0 0 .25rem $shadow;
-  border-radius: $border-radius;
+  background: repeating-linear-gradient( 45deg, #2d2b38, #2d2b38 20px, #5d4672 20px, #5d4672 40px ) repeat center center #2d2b38;
+  background-image: url("//blog.heaton.dev/images/chamber_of_sages.webp"); 
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 0 .25rem $shadow-light;
+  border-radius: 0 0 $border-radius $border-radius;
 
   .banner {
     min-height: 180px;
     padding: 1%;
-    background: repeating-linear-gradient( 45deg, #2d2b38, #2d2b38 20px, #5d4672 20px, #5d4672 40px ) repeat center center #2d2b38;
-    background-image: url("//www.heaton.dev/images/chamber_of_sages.webp"); 
-    background-position: center -12rem;
-    background-size: cover;
     border-radius: $border-radius $border-radius 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
@@ -202,11 +199,14 @@ figure {
   }
 
   .blog-nav {
-    position: relative;
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
-    color: #fff;
     border-radius: 0 0 $border-radius $border-radius;
-    box-shadow: inset 0 -1px 1px #373737;
+  }
+
+  .blog-nav .nav {
+    position: relative;
+    color: #fff;
+    //box-shadow: inset 0 -1px 1px #373737;
 
     /* Nav links */
     .nav-link {
@@ -251,7 +251,7 @@ figure {
       background: #fff;
       color: #000;
       border-radius: $border-radius;
-      box-shadow: 0 0 12px $shadow;
+      box-shadow: 0 0 12px $shadow-light;
 
       .close {
         position: absolute;
@@ -324,7 +324,7 @@ figure {
     background: #fff;
     border-color: transparent;
     border-radius: 2rem;
-    box-shadow: 0 0 3px $shadow;
+    box-shadow: 0 0 3px $shadow-light;
   }
 
   .btn-outline-primary:hover {
@@ -338,13 +338,14 @@ figure {
  */
 
 .blog-post,
-.sidebar-blob {
+.sidebar-blob,
+.twitter-timeline {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0 .25rem $shadow;
+  box-shadow: 0 0 .25rem $shadow-light;
 
   @media (prefers-color-scheme: light) {
     background: $content-bg;
@@ -395,7 +396,7 @@ figure {
         max-width: 256px;
         max-height: 128px;
         border-radius: $border-radius;
-        box-shadow: 0 4px 4px -4px $shadow;
+        box-shadow: 0 4px 4px -4px $shadow-light;
       }
     }
 
@@ -566,7 +567,7 @@ p > code {
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
   border-radius: $border-radius;
-  box-shadow: 0 0 3px $shadow;
+  box-shadow: 0 0 3px $shadow-light;
 
   p:last-child {
     margin-bottom: 0;
