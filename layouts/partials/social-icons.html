@@ -1,55 +1,55 @@
 {{ with .Site.Params.social }}
 
 {{ if .discord }}
-<a class="nav-item" title="Discord: {{ .discord }}">
+<a target="_blank" class="nav-item" title="Discord: {{ .discord }}">
   <span class="fab fa-discord" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .mastodon }}
-<a class="nav-item" href="https://{{ index .mastodon 1 }}/@{{ index .mastodon 0 }}" title="mastodon" rel="me">
+<a target="_blank" class="nav-item" href="https://{{ index .mastodon 1 }}/@{{ index .mastodon 0 }}" title="mastodon" rel="me">
   <span class="fab fa-mastodon"></span>
 </a>
 {{ end }}
 
 {{ if .twitter }}
-<a class="nav-item" href="https://twitter.com/{{ .twitter }}" title="Twitter">
+<a target="_blank" class="nav-item" href="https://twitter.com/{{ .twitter }}" title="Twitter">
   <span class="fab fa-twitter"></span>
 </a>
 {{ end }}
 
 {{ if .github }}
-<a class="nav-item" href="https://www.github.com/{{ .github }}" title="Github">
+<a target="_blank" class="nav-item" href="https://www.github.com/{{ .github }}" title="Github">
   <span class="fab fa-github" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .gitlab }}
-<a class="nav-item" href="https://gitlab.com/{{ .gitlab }}" title="Gitlab">
+<a target="_blank" class="nav-item" href="https://gitlab.com/{{ .gitlab }}" title="Gitlab">
   <span class="fab fa-gitlab" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .linkedin }}
-<a class="nav-item" href="https://www.linkedin.com/in/{{ .linkedin }}" title="LinkedIn">
+<a target="_blank" class="nav-item" href="https://www.linkedin.com/in/{{ .linkedin }}" title="LinkedIn">
   <span class="fab fa-linkedin" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .flickr }}
-<a class="nav-item" href="https://www.flickr.com/photos/{{ .flickr }}" title="Flickr">
+<a target="_blank" class="nav-item" href="https://www.flickr.com/photos/{{ .flickr }}" title="Flickr">
   <span class="fab fa-flickr" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .patreon }}
-<a class="nav-item" href="https://www.patreon.com/{{ .patreon }}" title="Patreon">
+<a target="_blank" class="nav-item" href="https://www.patreon.com/{{ .patreon }}" title="Patreon">
   <span class="fab fa-patreon" aria-hidden="true"></span>
 </a>
 {{ end }}
 
 {{ if .kofi }}
-<a class="nav-item" href="https://ko-fi.com/{{ .kofi }}" title="Ko-fi">
+<a target="_blank" class="nav-item" href="https://ko-fi.com/{{ .kofi }}" title="Ko-fi">
   <span class="fas fa-coffee fa-kofi" aria-hidden="true"></span>
 </a>
 {{ end }}
