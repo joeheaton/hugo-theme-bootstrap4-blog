@@ -3,7 +3,7 @@
 {{ $monthFormat := default "Jan" (index .Site.Params "date_format") }}
 {{ $yearFormat := default "2006" (index .Site.Params "date_format") }}
 
-<h2>
+<h1>
   <a href="{{ .Permalink }}" title="{{ .Title }}" target="_self">
     {{ if .Title }}
       {{ .Title }}
@@ -11,9 +11,8 @@
       {{ .Date.Format (default "2 Jan 2006" (index .Site.Params "date_format")) }}
     {{ end }}
   </a>
-</h2>
+</h1>
 
-{{ if .Site.Params.post_excerpts }}
 <div class="row">
   <div class="col-8 metadata">
       <!-- show metadata on posts -->
