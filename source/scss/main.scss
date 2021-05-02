@@ -281,14 +281,8 @@ figure {
   }
 }
 
-#main {
-  background: transparent;
-  padding: 1rem 0.5rem 0;
-  
-  &.container {
-    padding-left: 0;
-    padding-right: 0;
-  }
+#main, #footer {
+  padding: 1rem 1rem 0;
 }
 
 .sidebar {
