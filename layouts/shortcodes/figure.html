@@ -12,14 +12,14 @@
                 {{- end -}}
 
                 <img src="{{ .Get "src" }}"
-                    {{- if or (.Get "alt") (.Get "caption") }}
+                    {{ if or (.Get "alt") (.Get "caption") -}}
                     alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-                    {{- end -}}
+                    {{- end }}
                     style="{{ with .Get "width" }}max-width: {{ . }}; {{ end }}{{ with .Get "height" }}max-height: {{ . }};{{ end }}"
                 >
             </picture>
 
-            {{- if (.Get "copyright") -}}
+            {{- if (.Get "copyright") }}
             <p class="copyright text-right">
                 {{ with (.Get "copyright") -}}
                 &copy; {{- . -}}
@@ -55,18 +55,18 @@
             {{- if .Get "cite" }}
                 &ndash;
 
-                {{- with .Get "citelink" }}
+                {{- with .Get "citelink" -}}
                     <a href="{{ . }}">
                 {{- end -}}
                 
                 {{- .Get "cite" | markdownify -}}
                 
-                {{- if .Get "citelink" }}
+                {{- if .Get "citelink" -}}
                     </a>
                 {{- end }}
             {{- end }}
         </p>
-        {{- end }}
+        {{- end -}}
 
     </figcaption>
     {{- end }}
