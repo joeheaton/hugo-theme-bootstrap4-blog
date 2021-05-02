@@ -19,10 +19,10 @@ $screen-small: 30em;
  */
 
 html {
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Ubuntu, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", Arial, Ubuntu, "Noto Sans", "Segoe UI", sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --scrollbarBG: #CFD8DC;
   --thumbBG: #90A4AE;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 body {
@@ -235,6 +235,7 @@ figure {
       }
 
       input {
+        width: 100%;
         height: 100%;
         padding: 0 0 0 30px;
         background: transparent;
