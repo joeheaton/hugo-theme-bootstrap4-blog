@@ -2,17 +2,21 @@
  * Vars
  */
 
-$site-bg: rgb(243, 243, 243);  //Grey:606578
-$site-bg-dark: #24262d;
-$text-primary: #2d2b38;
-$text-primary-dark: #d8d8d8;
-$scheme: #2965B4;
-$content-bg: rgb(255, 255, 255);
-$content-bg-dark: #2f2f2f;
-$shadow: #333;
-$shadow-light: rgb(180, 180, 180);
-$border-radius: 8px;
-$screen-small: 30em;
+$SITE_BG: rgb(243, 243, 243);  //Grey:606578
+$SITE_BG_DARK: #24262d;
+
+$COLOR_SCHEME: #2965B4;
+$TEXT_COLOR: #2d2b38;
+$TEXT_COLOR_DARK: #d8d8d8;
+
+$CONTENT_BG: rgb(255, 255, 255);
+$CONTENT_BG_DARK: #2f2f2f;
+
+$BORDER_RADIUS: 8px;
+$SHADOW: #333;
+$SHADOW_LIGHT: rgb(180, 180, 180);
+
+$SCREEN_SMALL: 30em;
 
 /*
  * Globals
@@ -27,17 +31,17 @@ html {
 
 body {
   color: #333;
-  background: $site-bg; // url("https://live.staticflickr.com/65535/50380808312_a3aeb336b2_k.jpg") center center fixed;
+  background: $SITE_BG;
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 
-  @media (max-width: $screen-small) {
+  @media (max-width: $SCREEN_SMALL) {
     padding: 0;
   }
 
   @media (prefers-color-scheme: dark) {
-    background: $site-bg-dark;
-    color: $text-primary-dark;
+    background: $SITE_BG_DARK;
+    color: $TEXT_COLOR_DARK;
   }
 }
 
@@ -66,8 +70,6 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-weight: normal;
-
   a, a:hover, a:focus {
     /* padding: 0 0.8% 0.2rem;
     border-top: 1px solid #4191FF;
@@ -96,9 +98,9 @@ img {
 figure {
   margin-top: 0.5rem;
   text-align: center;
-  background: $text-primary;
-  border-radius: $border-radius;
-  box-shadow: 1px 1px 3px $shadow-light;
+  background: $TEXT_COLOR;
+  border-radius: $BORDER_RADIUS;
+  box-shadow: 1px 1px 3px $SHADOW_LIGHT;
 
   a:hover {
     text-decoration: none;
@@ -110,13 +112,13 @@ figure {
   }
 
   img {
-    border-radius: $border-radius $border-radius 0 0;
+    border-radius: $BORDER_RADIUS $BORDER_RADIUS 0 0;
   }
 
   figcaption {
     background: #2d2b38;
     padding: 0.4rem 0.8rem;
-    border-radius: 0 0 $border-radius $border-radius;
+    border-radius: 0 0 $BORDER_RADIUS $BORDER_RADIUS;
   }
 
   .image {
@@ -135,7 +137,7 @@ figure {
 
 #tallest {
   padding: 0;
-  border-radius: $border-radius;
+  border-radius: $BORDER_RADIUS;
   //box-shadow: 0 0 3px 1px #333;
 }
 
@@ -144,12 +146,12 @@ figure {
   padding: 0 0.5rem;
   font-size: 0.6rem;
   font-family: Hack, monospace, 'Courier New', Courier;
-  color: $text-primary;
-  text-shadow: $shadow-light 1px 1px 4px;
+  color: $TEXT_COLOR;
+  text-shadow: $SHADOW_LIGHT 1px 1px 4px;
 
   @media (prefers-color-scheme: dark) {
-    color: $text-primary-dark;
-    text-shadow: $shadow-light 1px 1px 4px;
+    color: $TEXT_COLOR_DARK;
+    text-shadow: $SHADOW_LIGHT 1px 1px 4px;
   }
 
   * {
@@ -162,13 +164,13 @@ figure {
   background-image: url("//blog.heaton.dev/images/chamber_of_sages.webp"); 
   background-position: center;
   background-size: cover;
-  box-shadow: 0 0 .25rem $shadow-light;
-  border-radius: 0 0 $border-radius $border-radius;
+  box-shadow: 0 0 .25rem $SHADOW_LIGHT;
+  border-radius: 0 0 $BORDER_RADIUS $BORDER_RADIUS;
 
   .banner {
     min-height: 180px;
     padding: 1%;
-    border-radius: $border-radius $border-radius 0 0;
+    border-radius: $BORDER_RADIUS $BORDER_RADIUS 0 0;
     box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 
     .avatar {
@@ -200,7 +202,7 @@ figure {
 
   .blog-nav {
     background: linear-gradient(to bottom, #519cff 0%, #2965b4 100%) repeat center center #2965b4;
-    border-radius: 0 0 $border-radius $border-radius;
+    border-radius: 0 0 $BORDER_RADIUS $BORDER_RADIUS;
   }
 
   .blog-nav .nav {
@@ -225,7 +227,7 @@ figure {
       height: 84%;
       margin: 1%;
       border: 1px solid #fff;
-      border-radius: $border-radius;
+      border-radius: $BORDER_RADIUS;
 
       label {
         position: absolute;
@@ -251,8 +253,8 @@ figure {
       z-index: 1;
       background: #fff;
       color: #000;
-      border-radius: $border-radius;
-      box-shadow: 0 0 12px $shadow-light;
+      border-radius: $BORDER_RADIUS;
+      box-shadow: 0 0 12px $SHADOW_LIGHT;
 
       .close {
         position: absolute;
@@ -283,6 +285,11 @@ figure {
 
 #main, #footer {
   padding: 1rem 1rem 0;
+  
+  /*&.container-xl {
+    padding-left: 0;
+    padding-right: 0;
+  }*/
 }
 
 .sidebar {
@@ -319,11 +326,11 @@ figure {
     background: #fff;
     border-color: transparent;
     border-radius: 2rem;
-    box-shadow: 0 0 3px $shadow-light;
+    box-shadow: 0 0 3px $SHADOW_LIGHT;
   }
 
   .btn-outline-primary:hover {
-    color: $scheme;
+    color: $COLOR_SCHEME;
   }
 }
 
@@ -340,14 +347,14 @@ figure {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0 .25rem $shadow-light;
+  box-shadow: 0 0 .25rem $SHADOW_LIGHT;
 
   @media (prefers-color-scheme: light) {
-    background: $content-bg;
+    background: $CONTENT_BG;
   }
 
   @media (prefers-color-scheme: dark) {
-    background: $content-bg-dark;
+    background: $CONTENT_BG_DARK;
   }
 
   &:first-child {
@@ -377,7 +384,7 @@ figure {
 
     .fa.fa-tag {
       vertical-align: bottom;
-      color: $scheme;
+      color: $COLOR_SCHEME;
     }
   }
 
@@ -392,8 +399,8 @@ figure {
       img {
         max-width: 256px;
         max-height: 128px;
-        border-radius: $border-radius;
-        box-shadow: 0 4px 4px -4px $shadow-light;
+        border-radius: $BORDER_RADIUS;
+        box-shadow: 0 4px 4px -4px $SHADOW_LIGHT;
       }
     }
 
@@ -495,7 +502,7 @@ p > code {
 
 @media (prefers-color-scheme: dark) {
   .card {
-    background-color: $site-bg-dark;
+    background-color: $SITE_BG_DARK;
   }
 }
 
@@ -562,9 +569,8 @@ p > code {
   margin: 1rem auto 1rem;
   text-align: center;
   background-color: #f9f9f9;
-  border-top: .05rem solid #e5e5e5;
-  border-radius: $border-radius;
-  box-shadow: 0 0 3px $shadow-light;
+  border-radius: $BORDER_RADIUS;
+  box-shadow: 0 0 3px $SHADOW_LIGHT;
 
   p:last-child {
     margin-bottom: 0;
@@ -576,8 +582,8 @@ p > code {
   }
 
   @media (prefers-color-scheme: dark) {
-    background: $content-bg-dark;
-    border-color: $shadow;
+    background: $CONTENT_BG_DARK;
+    border-color: $SHADOW;
   }
 
   ul {
@@ -635,7 +641,7 @@ p > code {
 }
 
 .vcard {
-  box-shadow: 0 3px 3px -3px $shadow;
+  box-shadow: 0 3px 3px -3px $SHADOW;
 
   p {
     margin: 0;
@@ -680,8 +686,8 @@ p > code {
 
 .asciinema-player {
   margin: 0 0 1rem;
-  border-radius: $border-radius;
-  box-shadow: 0 0 3px 1px $shadow-light;
+  border-radius: $BORDER_RADIUS;
+  box-shadow: 0 0 3px 1px $SHADOW_LIGHT;
 }
 
 .twitter-timeline {
@@ -695,8 +701,8 @@ p > code {
 .youtube-player,
 .map-embed,
 .mastodon-embed {
-  border-radius: $border-radius;
-  box-shadow: 0 0 3px 1px $shadow-light;
+  border-radius: $BORDER_RADIUS;
+  box-shadow: 0 0 3px 1px $SHADOW_LIGHT;
 }
 
 .youtube-player {
@@ -721,7 +727,7 @@ p > code {
     width: 550px;
     height: 550px;
     margin: 0 auto;
-    border-radius: $border-radius;
+    border-radius: $BORDER_RADIUS;
   }
 }
 
