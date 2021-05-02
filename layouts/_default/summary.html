@@ -1,4 +1,4 @@
-<article class="blog-post">
+<article class="blog-post {{ if (not .Site.Params.post_excerpts) }}title-only{{ end }}">
   <header>
     {{ partial "post-meta.html" . }}
   </header>
