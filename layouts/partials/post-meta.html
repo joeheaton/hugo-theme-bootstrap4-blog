@@ -51,7 +51,7 @@
         {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
           <!-- Show separator on pages which don't have a publishdate -->
           {{ if ne .Params.type "page" }}
-            &ndash;
+            <!--&ndash;-->
           {{ end }} <!-- /.type!=page -->
           
           <span>Updated</span>
@@ -84,4 +84,3 @@
     {{ end }}
   </div>
 </div>
-{{ end }}
