@@ -40,14 +40,14 @@
 
         {{ block "header" . }}
           {{ if (ne .Site.Params.header_visible false) }}
-          <div class="container-xl banner d-flex">
+          <div class="container-xl banner d-flex justify-content-between">
             {{ if .Site.Params.header_avatar }}
             <a href="{{ .Site.BaseURL }}" class="avatar" target="_self">
               <img class="avatar-img" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar">
             </a>
             {{ end }}
 
-            <nav class="nav sharing-icons justify-content-end ml-auto">
+            <nav class="nav sharing-icons justify-content-between ml-auto">
               {{ partial "social-icons.html" . }}
 
               <a class="nav-item" id="settings-toggle" target="_self" href="javascript: void(0)">
