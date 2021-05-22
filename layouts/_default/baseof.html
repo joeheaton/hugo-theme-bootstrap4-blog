@@ -15,47 +15,36 @@
     {{ "<!-- a11y: skip to content -->" | safeHTML }}
     <a href="#main" target="_self" class="skip-to-main">Skip to content.</a>
 
-    {{ if .Site.Params.masthead_visible }}
-    {{ "<!-- site masthead -->" | safeHTML }}
-    <div class="container-xl masthead-super d-flex flex-row justify-content-between">
-      <div>
-        {{ .Site.Params.tagline }}
-      </div>
-
-      <div>
-        🥐 ☕
-      </div>
-
-      <div>
-        Online since 2011
-      </div>
-    </div>
+    {{ if .Site.Params.masthead_super }}
+      {{ "<!-- site masthead-super -->" | safeHTML }}
+      {{ partial "masthead-super.html" . }}
     {{ end }}
 
     {{ "<!-- site container -->" | safeHTML }}
     <div id="tallest" class="container-fluid">
 
-      {{ block "masthead" . }}
-      <div class="masthead">
+      {{ if .Site.Params.masthead }}
+        {{ block "masthead" . }}
+        <div class="masthead">
 
-        {{ block "header" . }}
-          {{ if (ne .Site.Params.header_visible false) }}
-          <div class="container-xl banner d-flex justify-content-between">
-            {{ if .Site.Params.header_avatar }}
-            <a href="{{ .Site.BaseURL }}" class="avatar" target="_self">
-              <img class="avatar-img" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar">
-            </a>
-            {{ end }}
-
-            <nav class="nav sharing-icons justify-content-between ml-auto">
-              {{ partial "social-icons.html" . }}
-
-              <a class="nav-item" id="settings-toggle" target="_self" href="javascript: void(0)">
-                <span class="fas fa-cog"></span>
+          {{ block "header" . }}
+            {{ if (ne .Site.Params.header_visible false) }}
+            <div class="container-xl banner d-flex justify-content-between">
+              {{ if .Site.Params.header_avatar }}
+              <a href="{{ .Site.BaseURL }}" class="avatar" target="_self">
+                <img class="avatar-img" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar">
               </a>
-            </nav>
+              {{ end }}
 
-          </div>
+              <nav class="nav sharing-icons justify-content-between ml-auto">
+                {{ partial "social-icons.html" . }}
+
+                <a class="nav-item" id="settings-toggle" target="_self" href="javascript: void(0)">
+                  <span class="fas fa-cog"></span>
+                </a>
+              </nav>
+            </div>
+            {{ end }}
           {{ end }}
         {{ end }}
 
