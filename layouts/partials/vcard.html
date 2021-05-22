@@ -50,11 +50,13 @@
                     </p>
                 </address>
 
-                {{ if .Site.Params.me.bio }}
                 <div class="card-text vcard-bio">
-                    {{ .Site.Params.me.bio | markdownify }}
+                    {{ if and .Site.Params.me.bio .Site.Params.me.bio_text }}
+                        {{ .Site.Params.me.bio_text | markdownify }}
+                    {{ else if .Site.Params.me.bio }}
+                        {{ .Site.Params.description | markdownify }}
+                    {{ end }}
                 </div>
-                {{ end }}
 
                 <div class="card-text vcard-link">
                     <small class="text-muted">
