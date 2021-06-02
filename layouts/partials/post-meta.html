@@ -14,7 +14,7 @@
 </h1>
 
 <div class="row">
-  <div class="col-8 metadata">
+  <div class="col metadata">
       <!-- show metadata on posts -->
       {{ if not .Date.IsZero }}
         {{ if .Params.draft }}
@@ -45,24 +45,6 @@
         {{ end }}
       {{ end }} <!-- /.type!=page -->
 
-      <!-- if lastmod differs to date then show Updated -->
-      {{ if (and .Params.lastmod (or (ne .Params.lastmod .Date) (eq .Params.type "page"))) }}
-        <!-- if lastmod not same day as date -->
-        {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
-          <!-- Show separator on pages which don't have a publishdate -->
-          {{ if ne .Params.type "page" }}
-            <!--&ndash;-->
-          {{ end }} <!-- /.type!=page -->
-          
-          <span>Updated</span>
-          <time datetime="{{ .Params.lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
-            {{ .Params.lastmod.Format $dayFormat | humanize }}
-            {{ .Params.lastmod.Format $monthFormat }}
-            {{ .Params.lastmod.Format $yearFormat }}
-          </time>
-        {{ end }}
-      {{ end }}
-
       <!-- if .Date or .Params.lastmod is over a year old -->
       {{ $pageAge := .Date }}
       {{ if .Params.lastmod }}
@@ -76,9 +58,29 @@
           <i class="fas fa-exclamation-triangle {{ if gt $ageMonths .Site.Params.post_age_months_warn }}text-orange{{ else }}text-info{{ end }}" title="Keep in mind this article is over a year old!"></i>
         {{ end }}
       {{ end }} <!-- /.type!=page -->
+
+      <!-- if lastmod differs to date then show Updated -->
+      {{ if (and .Params.lastmod (or (ne .Params.lastmod .Date) (eq .Params.type "page"))) }}
+        <!-- if lastmod not same day as date -->
+        {{ if (ne (.Date.Format "2006-01-02") (.Params.lastmod.Format "2006-01-02")) }}
+          <!-- Show separator on pages which don't have a publishdate -->
+          {{ if ne .Params.type "page" }}
+            <!--&ndash;-->
+          {{ end }} <!-- /.type!=page -->
+          
+          <div>
+            <span>Updated</span>
+            <time datetime="{{ .Params.lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ .Params.lastmod.Format $dayFormat | humanize }}
+              {{ .Params.lastmod.Format $monthFormat }}
+              {{ .Params.lastmod.Format $yearFormat }}
+            </time>
+          </div>
+        {{ end }}
+      {{ end }}
   </div>
 
-  <div class="col text-end">
+  <div class="col col-md-auto text-end metadata-extra">
     {{ if (eq .Params.sticky true) }}
       <i class="fas fa-splotch" title="Sticky post!"></i>
     {{ end }}
