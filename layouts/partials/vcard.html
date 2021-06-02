@@ -1,56 +1,102 @@
+<!--
+    - https://schema.org/Person
+    - hcard - http://microformats.org/wiki/hcard
+      - classes: vcard fn n given-name family-name org photo adr url email note
+
+-->
 <section class="vcard card mb-3 border border-primary" itemscope itemtype="http://schema.org/Person">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar" class="card-img" itemprop="image">
+            <img src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.me.email }}?s=200" alt="avatar" class="card-img photo" itemprop="image">
         </div>
 
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="vcard-name card-title font-weight-bold" itemprop="name">
-                    {{ if and (.Site.Params.me.name.first) (.Site.Params.me.name.last) }}
-                        <span class="vcard-firstname" itemprop="givenName">
-                            {{ with .Site.Params.me.name.first }}{{ . }}{{ end }}
-                        </span>
+                    <div class="vcard-personname fn n">
+                        {{ with .Site.Params.me.honorific_prefix }}
+                            <span class="vcard-honorific-prefix">
+                                {{ . }}
+                            </span>
+                        {{ end }}
 
-                        <span class="vcard-lastname" itemprop="FamilyName">
-                            {{ with .Site.Params.me.name.last }}{{ . }}{{ end }}
-                        </span>
-                    {{ else }}
-                        <span class="vcard-fullname">
-                            {{ .Site.Params.me.name.full }}
-                        </span>
-                    {{ end }}
+                        {{ if and (.Site.Params.me.name.first) (.Site.Params.me.name.last) }}
+                            <span class="vcard-firstname given-name" itemprop="givenName">
+                                {{ with .Site.Params.me.name.first }}{{ . }}{{ end }}
+                            </span>
+                            
+                            <span class="vcard-additionalname additional-name" itemprop="givenName">
+                                {{ with .Site.Params.me.name.middle }}{{ . }}{{ end }}
+                            </span>
+
+                            <span class="vcard-lastname family-name" itemprop="FamilyName">
+                                {{ with .Site.Params.me.name.last }}{{ . }}{{ end }}
+                            </span>
+                        {{ else }}
+                            <span class="vcard-fullname">
+                                {{ .Site.Params.me.name.full }}
+                            </span>
+                        {{ end }}
+
+                        {{ with .Site.Params.me.honorific_suffix }}
+                            <span class="vcard-honorific-suffix">
+                                {{ . }}
+                            </span>
+                        {{ end }}
+                    </div>
                 </h5>
 
-                <address class="vcard-address">
-                    <p class="vcard-email">
-                        <span>
+                {{ with .Site.Params.me.nickname }}
+                <div class="vcard-nickname nickname">
+                    {{ . }}
+                </div>
+                {{ end }}
+
+                {{ with .Site.Params.me.org }}
+                <div class="vcard-org org">
+                    {{ . }}
+                </div>
+                {{ end }}
+
+                <address class="vcard-address adr">
+                    <p>
+                        <!--<span>
                             Email: 
-                        </span>
+                        </span>-->
                         
-                        <a href="mailto:{{ .Site.Params.me.email }}" itemprop="email">
+                        <a href="mailto:{{ .Site.Params.me.email }}" class="vcard-email email" itemprop="email">
                             {{ .Site.Params.me.email }}
                         </a>
                     </p>
 
                     <p class="vcard-homepage">
-                        <span>
+                        <!--<span>
                             Web:
-                        </span>
+                        </span>-->
 
                         {{ with .Site.Params.me.url }}
-                            <a href="{{ . }}" itemprop="url">
+                            <a href="{{ . }}" class="vcard-url url" itemprop="url">
                                 {{ . }}
                             </a>
                         {{ else }}
-                            <a href="{{ .Site.BaseURL }}" itemprop="url">
+                            <a href="{{ .Site.BaseURL }}" class="vcard-url url" itemprop="url">
                                 {{ .Site.BaseURL }}
                             </a>
                         {{ end }}
                     </p>
+
+                    {{ if .Site.Params.me.location }}
+                    <div class="vcard-location country-name">
+                        <p>
+                            {{ with .Site.Params.me.location.country }}
+                                {{ . }}
+                            {{ end }}
+                        </p>
+                    </div>
+                    {{end }}
                 </address>
 
-                <div class="card-text vcard-bio">
+                <div class="card-text vcard-bio note">
                     {{ if and .Site.Params.me.bio .Site.Params.me.bio_text }}
                         {{ .Site.Params.me.bio_text | markdownify }}
                     {{ else if .Site.Params.me.bio }}
