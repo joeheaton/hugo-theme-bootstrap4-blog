@@ -26,8 +26,8 @@
             {{ end }}
 
             <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" rel="tag" target="_self">
-                <span>{{ . }}</span>
-            </a>
+                <span>{{ . }}</span><!-- Collapse whitespace using comment
+            --></a>
         {{ end }}
 
         <i class="fa fa-tag" aria-hidden="true"></i>
