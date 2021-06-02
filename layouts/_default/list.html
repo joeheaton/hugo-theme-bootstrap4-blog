@@ -3,6 +3,7 @@
   {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
 
   <!-- all posts -->
+  <div class="blog-posts-paginated">
   {{ range $paginator.Pages }}
     {{ if .Site.Params.truncate }}
       {{ .Render "summary" }}
@@ -10,6 +11,7 @@
       {{ .Render "content" }}
     {{ end }}
   {{ end }}
+  </div>
 
   <!-- pagination buttons -->
   {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
