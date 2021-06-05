@@ -18,7 +18,7 @@
 
 {{ "<!-- Primary CSS -->" | safeHTML }}
 {{ $sass := resources.Get "scss/style.scss" }}
-{{ $style := $sass | resources.ToCSS }}
+{{ $style := $sass | resources.ExecuteAsTemplate "style.scss" . | resources.ToCSS }}
 <link href="{{ $style.Permalink }}" rel="stylesheet" as="style">
 
 {{ with .Site.Params.library.fontawesome -}}
