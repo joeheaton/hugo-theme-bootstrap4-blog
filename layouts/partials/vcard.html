@@ -60,20 +60,12 @@
 
                 <address class="vcard-address adr">
                     <p>
-                        <!--<span>
-                            Email: 
-                        </span>-->
-                        
                         <a href="mailto:{{ .Site.Params.me.email }}" class="vcard-email email" itemprop="email">
                             {{ .Site.Params.me.email }}
                         </a>
                     </p>
 
                     <p class="vcard-homepage">
-                        <!--<span>
-                            Web:
-                        </span>-->
-
                         {{ with .Site.Params.me.url }}
                             <a href="{{ . }}" class="vcard-url url" itemprop="url">
                                 {{ . }}
@@ -104,7 +96,7 @@
                     {{ end }}
                 </div>
 
-                <div class="card-text vcard-link">
+                <div class="card-text vcard-save">
                     <small class="text-muted">
                         <a href="{{ .Site.BaseURL }}/{{ .Site.Params.me.email | htmlEscape }}.vcf">
                             &#128427; Save to contacts
