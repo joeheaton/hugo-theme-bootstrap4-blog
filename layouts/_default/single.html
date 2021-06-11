@@ -12,6 +12,14 @@
     {{ end }}
 
     {{ .Content }}
+
+    {{ with .Params.Notice }}
+    <h2>Notice</h2>
+  
+    <blockquote>
+      {{ . }}
+    </blockquote>
+    {{ end }}
   </section>
 
   {{ if .IsTranslated }}
