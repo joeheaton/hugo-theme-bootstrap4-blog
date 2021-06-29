@@ -97,11 +97,9 @@
                 </div>
 
                 <div class="card-text vcard-save">
-                    <small class="text-muted">
-                        <a href="{{ .Site.BaseURL }}/{{ .Site.Params.me.email | htmlEscape }}.vcf">
-                            &#128427; Save to contacts
-                        </a>
-                    </small>
+                    <a href="{{ .Site.BaseURL }}/{{ .Site.Params.me.email | htmlEscape }}.vcf">
+                        &#128427; <span>Save to contacts</span>
+                    </a>
                 </div>
             </div>
         </div>
