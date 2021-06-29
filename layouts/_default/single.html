@@ -36,6 +36,10 @@
 
   <footer class="footer">
     {{ partial "vcard.html" . }}
+
+    {{ if not .Site.Params.mailing.sidebar }}
+      {{ partial "mailinglist.html" . }}
+    {{ end }}
     
     {{ if (ne ($.Param "sharingicons") false) }}
       {{ partial "sharing-icons.html" . }}
